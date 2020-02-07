@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'about', # add
+    'footer', # add
+    'header', # add
     'rest_framework', # add
     'corsheaders', # add
 
@@ -64,6 +66,7 @@ MIDDLEWARE = [
 
 CORS_ORIGIN_WHITELIST = ( # add
     'http://localhost:3000',
+    'http://localhost:3030',
 )
 
 ROOT_URLCONF = 'djangoreactapi.urls'
