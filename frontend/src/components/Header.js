@@ -32,6 +32,10 @@ const useStyles = makeStyles(theme => ({
   },
   divider: {
     margin: theme.spacing(1, 0, 0, 0)
+  },
+  buttonGroup: {
+    // position: "absolute",
+    // top: 0
   }
 }));
 
@@ -45,11 +49,33 @@ export default function Header(props) {
         <Grid item xs={10} sm={10}>
           <Toolbar component="nav" variant="dense" className={classes.toolbar}>
             <img src={Logo}/>
-            <spacer/>
-            <spacer/>
+            {/*<spacer/>*/}
             <Grid container justify="flex-end" className={classes.toolbarSecondary}>
 	            {sections.map(section => (
-	            	<Grid item xs={2} sm={2}>
+                <Grid item xs={4}>
+                  <div>
+                    {/*key={section.title}*/}
+                    <Typography>
+                      { section.title }
+                    </Typography>
+                    <ButtonGroup
+                      variant="text"
+                      orientation="vertical"
+                      color="primary"
+                      aria-label="vertical outlined primary button group"
+                      className={classes.buttonGroup}
+                      hidden="true">
+                      {section.subSections.map(subSection => (
+                        <Button href={subSection.url}>
+                          { subSection.title }
+                        </Button>
+                        ))}
+                    </ButtonGroup>
+
+
+                  </div>
+                </Grid>
+	            	/*<Grid item xs={2} sm={2}>
 		              <Button
 		              	fullWidth={true}
 		              	size="medium"
@@ -58,7 +84,7 @@ export default function Header(props) {
 		              >
 		                {section.title}
 		              </Button>
-	              </Grid>
+	              </Grid>*/
                 
 	            ))}
             </Grid>

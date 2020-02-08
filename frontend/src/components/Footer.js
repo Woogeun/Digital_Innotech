@@ -32,14 +32,15 @@ export default function Footer(props) {
   return (
     <footer className={classes.footer}>
       <Container maxWidth="lg">
-        <Typography variant="subtitle1" align="center" gutterBottom>
+        {/*<Typography variant="subtitle1" align="center" gutterBottom>
           Multimedia Computing Laboratory
-        </Typography>
+        </Typography>*/}
         <Typography variant="body2" align="center" color="textSecondary" component="p">
-          	2F #201, Daejeon-ro 1092, Daedeok-gu, Daejeon, South Korea 34433<br/>
-			Tel. +82-42-365-9046 Email. contact@vpluslab.kr<br/>
+          대전광역시 유성구 문화원로 119, 7층 #714  대표 이메일 : heunglee@kaist.ac.kr<br/>
+          Copyright  Ⅳⓒ 2020 Digital Innotech INC. All Rights Reversed<br/>
+          우리은행 270-116160-13-001 ㈜디지탈이노텍
         </Typography>
-        <Copyright />
+        {/*<Copyright />*/}
       </Container>
     </footer>
   );

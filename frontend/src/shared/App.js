@@ -15,20 +15,50 @@ class App extends Component {
 		this.state = {
 			sections: [
 				{
-					title: "Home",
-					url: "/"
+					title: "회사 소개",
+					url: "/about",
+					subSections: [
+						{
+							title: "CTO 메세지",
+							url: "/message"
+						}, 
+						{
+							title: "회사 연혁",
+							url: "/history"
+						}, 
+						{
+							title: "회사 소개 자료",
+							url: "/introduction"
+						}, 
+						{
+							title: "소식",
+							url: "/news"
+						}, 
+					]
 				},
 				{
-					title: "Members",
-					url: "/members"
+					title: "소프트웨어 솔루션",
+					url: "/solution",
+					subSections: [
+						{
+							title: "KAI_Forensics 2.0",
+							url: "/kaiForensics"
+						}
+					]
 				},
 				{
-					title: "Research",
-					url: "/research"
-				},
-				{
-					title: "Contact",
-					url: "/contact"
+					title: "영상/동영상 포렌식 기술이란?",
+					url: "/forensics",
+					subSections: [
+						{
+							title: "영상/동영상 포렌식 기술이란?",
+							url: "/technique"
+						}, 
+						{
+							title: "CTO 메세지",
+							url: "/papers"
+						}
+					]
 				}
 			]
 		};
@@ -40,10 +70,10 @@ class App extends Component {
 				
 				<Header 
 					sections={this.state.sections}
-					title='Multimedia Computing Laboratory'
+					
 				/>
 
-				<Body subAbout={ this.state.sections.map(section => (section.name)) } />
+				{/*<Body sections={ this.state.sections } />*/}
 
 				{/*<Menu/>
 				<h1>{this.props.data}</h1>
