@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { NavLink, Link, Route, Switch } from 'react-router-dom';
-import CEO from 'components/about/CEO'
+import CTO from 'components/about/CTO'
 import Career from 'components/about/Career'
 import Button from 'components/Button'
 
@@ -25,7 +25,7 @@ class About extends Component {
 					</div>
 					<Switch>
 						<Route path='/About/Career' component={Career} />
-						<Route path='/About/CEO' component={CEO} />
+						<Route path='/About/CEO' component={CTO} />
 						{/*<Route path='Career' component={Career} />*/}
 					</Switch>
 				</div>

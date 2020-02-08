@@ -51,7 +51,9 @@ export default function Header(props) {
       <Grid container justify="center">
         <Grid item xs={10} sm={10}>
           <Toolbar component="nav" variant="dense" className={classes.toolbar}>
-            <img src={Logo} className={classes.logo}/>
+            <a href='/'>
+              <img src={Logo} className={classes.logo} />
+            </a>
             {/*<spacer/>*/}
             <Grid container justify="flex-end" className={classes.toolbarSecondary}>
 	            {sections.map(section => (
