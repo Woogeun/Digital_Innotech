@@ -73,7 +73,7 @@ class App extends Component {
 					
 				/>
 
-				{/*<Body sections={ this.state.sections } />*/}
+				<Body sections={ this.state.sections } />
 
 				{/*<Menu/>
 				<h1>{this.props.data}</h1>

@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import Grid from'@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import MainImg from 'assets/light_banner1.jpg';
+import MainImg from 'assets/home.png';
 
 import NewsPost from '../post/NewsPost';
 import News from '../../data/news.js';
@@ -19,7 +19,8 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: '#FAFAFA',
     margin: theme.spacing(2, 0),
     display: 'flex',
-    height: 300,
+    minHeight: 300,
+    width: '100%',
   },
   details: {
     display: 'flex',
@@ -44,8 +45,8 @@ const useStyles = makeStyles(theme => ({
       width: '50%',
   },
   media: {
-    opacity: '40%',
-    width: '50%',// 16:9
+    // opacity: '40%',
+    // width: '50%',// 16:9
   },
   titleP: {
     fontFamily: 'Times New Roman',
@@ -80,7 +81,7 @@ export default function Home(props) {
       <Card 
           elevation={0}
           className={classes.card}>
-          <div className={classes.details}>
+          {/*<div className={classes.details}>
               <CardContent className={classes.content}>
                 <Grid 
                   className={classes.detailTitles} 
@@ -105,7 +106,7 @@ export default function Home(props) {
                   </Box>
                 </Grid>
               </CardContent>
-          </div>
+          </div>*/}
             <CardMedia
               component="img"
               className={classes.media}
@@ -114,7 +115,7 @@ export default function Home(props) {
             />
 
       </Card>
-      <div>
+      {/*<div>
         <Typography className={classes.newsTitle} color="textPrimary" variant="h6">
           <p className={classes.titleP}>
             News
@@ -142,7 +143,7 @@ export default function Home(props) {
         <Grid spacing={2} className={classes.postBigTile} item>
           <NewsPost post={News[3]} />
         </Grid>
-      </Grid>
+      </Grid>*/}
     </div>
     );
 }

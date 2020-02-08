@@ -8,7 +8,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
-import Logo from '.././assets/mmc_logo.png';
+import Logo from '.././assets/logo.png';
 import Banner from '.././assets/light_banner1.jpg';
 import Divider from '@material-ui/core/Divider';
 
@@ -21,6 +21,9 @@ const useStyles = makeStyles(theme => ({
   	margin: theme.spacing(3, 0, 0, 0),
     justifyContent: 'space-around',
     overflowX: 'auto',
+  },
+  logo: {
+    maxWidth: 150
   },
   toolbarSecondary: {
     padding: theme.spacing(3, 0, 0, 0),
@@ -48,7 +51,7 @@ export default function Header(props) {
       <Grid container justify="center">
         <Grid item xs={10} sm={10}>
           <Toolbar component="nav" variant="dense" className={classes.toolbar}>
-            <img src={Logo}/>
+            <img src={Logo} className={classes.logo}/>
             {/*<spacer/>*/}
             <Grid container justify="flex-end" className={classes.toolbarSecondary}>
 	            {sections.map(section => (
