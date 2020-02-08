@@ -17,8 +17,8 @@ class Body extends Component {
 							{/*<Route path="/about" component={() => <About subAbout={ this.props.subAbout } />} />
 							<Route path="/solution" component={Members} />
 							<Route path="/forensics" component={Contact} />*/}
-							<Route path="/message" component={() => <CTO />} />
-							<Route path="/" component={() => <Home />} />
+							<Route exact path="/message" component={() => <CTO />} />
+							<Route exact path="/" component={() => <Home />} />
 						</Switch>
 					</div>
 				</div>
