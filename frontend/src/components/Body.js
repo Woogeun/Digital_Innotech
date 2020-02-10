@@ -3,6 +3,7 @@ import { NavLink, Link, Route, Switch } from 'react-router-dom';
 import Home from 'components/about/Home';
 import CTO from 'components/about/CTO';
 import History from 'components/about/History';
+import Introduction from 'components/about/Introduction';
 
 class Body extends Component {
 	render () {
@@ -15,8 +16,12 @@ class Body extends Component {
 							<Route path="/solution" component={Members} />
 							<Route path="/forensics" component={Contact} />*/}
 							<Route exact path="/" component={() => <Home />} />
-							<Route exact path="/history" component={() => <History />} />
+							
 							<Route exact path="/message" component={() => <CTO />} />
+							<Route exact path="/history" component={() => <History />} />
+							<Route exact path="/introduction" component={() => <Introduction />} />
+
+							
 						</Switch>
 					</div>
 				</div>

@@ -11,7 +11,7 @@ import Grid from'@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 import MainImg from 'assets/home.png';
-import profileImg from 'assets/profile.png'
+import profileImg from 'assets/profile.png';
 
 import NewsPost from '../post/NewsPost';
 import News from '../../data/news.js';
