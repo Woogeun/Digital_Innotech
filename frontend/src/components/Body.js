@@ -1,33 +1,58 @@
-import React, { Component } from 'react'
-import { NavLink, Link, Route, Switch } from 'react-router-dom';
-import Home from 'components/about/Home';
-import CTO from 'components/about/CTO';
-import History from 'components/about/History';
+import React, { useState } 	from 'react';
+import PropTypes 			from 'prop-types';
+import { Route, Switch } 	from 'react-router-dom';
+
+import { makeStyles } 	from '@material-ui/core/styles';
+import Grid 			from '@material-ui/core/Grid';
+
+import Home 		from 'components/about/Home';
+import CTO 			from 'components/about/CTO';
+import History 		from 'components/about/History';
 import Introduction from 'components/about/Introduction';
+import News 		from 'components/about/News';
 
-class Body extends Component {
-	render () {
-		return (
-			<div className="body">
-				<div className='content'>
-					<div className='container' class='_body_'>
-						<Switch>
-							{/*<Route path="/about" component={() => <About subAbout={ this.props.subAbout } />} />
-							<Route path="/solution" component={Members} />
-							<Route path="/forensics" component={Contact} />*/}
-							<Route exact path="/" component={() => <Home />} />
-							
-							<Route exact path="/message" component={() => <CTO />} />
-							<Route exact path="/history" component={() => <History />} />
-							<Route exact path="/introduction" component={() => <Introduction />} />
+import Technique 	from 'components/forensics/Technique';
 
-							
-						</Switch>
-					</div>
-				</div>
-			</div>
-		);
+
+const useStyles = makeStyles(theme => ({
+	root: {
+		margin: 0,
+		padding: 0,
+		minWidth: 1024,
+		minHeight: 768,
+	},
+	container: {
+		padding: 10,
 	}
+}));
+
+
+export default function Body(props) {
+	const classes = useStyles();
+
+	return (
+		<Grid container justify='center' className={ classes.root }>
+			<Grid item xs={8} className={ classes.container }>
+				<Switch>
+					<Route exact path="/" component={() => <Home />} />
+					
+					<Route exact path="/message" 		component={() => <CTO />} />
+					<Route exact path="/history" 		component={() => <History />} />
+					<Route exact path="/introduction" 	component={() => <Introduction />} />
+					<Route exact path="/news" 			component={() => <News />} />
+
+					<Route exact path="/technique" 		component={() => <Technique />} />
+
+				</Switch>
+			</Grid>
+		</Grid>
+	);	
 }
 
-export default Body
+Body.defaultProps = {
+
+};
+
+Body.propTypes = {
+	
+};

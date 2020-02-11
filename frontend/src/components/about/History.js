@@ -4,7 +4,6 @@ import PropTypes            from 'prop-types';
 import { makeStyles, useTheme }	from '@material-ui/core/styles';
 import { deepPurple }			from '@material-ui/core/colors';
 import Avatar 			from '@material-ui/core/Avatar';
-import Box        		from '@material-ui/core/Box';
 import Divider      	from '@material-ui/core/Divider';
 import Grid           	from '@material-ui/core/Grid';
 import List 			from '@material-ui/core/List';
@@ -13,7 +12,7 @@ import ListItemText 	from '@material-ui/core/ListItemText';
 import ListItemAvatar 	from '@material-ui/core/ListItemAvatar';
 import Typography       from '@material-ui/core/Typography';
 
-import History from 'data/history.js';
+import history from 'data/history.js';
 
 
 const useStyles = makeStyles(theme => ({
@@ -41,13 +40,13 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-export default function Histories(props) {
+export default function History(props) {
 	const classes = useStyles();
 	const theme = useTheme();
 
 	return (
 		<List className={ classes.list }>
-			{ History.map((content, i) => {
+			{ history.map((content, i) => {
 				return (
 					<React.Fragment>
 						<ListItem className={ classes.listItem }>
@@ -83,10 +82,10 @@ export default function Histories(props) {
 	);
 }
 
-Histories.defaultProps = {
+History.defaultProps = {
 
 };
 
-Histories.propTypes = {
+History.propTypes = {
 
 };

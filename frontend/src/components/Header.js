@@ -16,6 +16,7 @@ const useStyles = makeStyles(theme => ({
 		margin: theme.spacing(3, 0, 0, 0),
 		justifyContent: 'space-around',
 		overflowX: 'auto',
+		textAlign: 'center'
 	},
 	logo: {
 		maxWidth: 150

@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } 	from 'react';
+import PropTypes 			from 'prop-types';
 
-import Header from 'components/Header';
-import Body from 'components/Body';
-import Footer from 'components/Footer';
+import Header 	from 'components/Header';
+import Body 	from 'components/Body';
+import Footer 	from 'components/Footer';
 
 
 export default function App(props) {
@@ -49,7 +49,7 @@ export default function App(props) {
 					url: "/technique"
 				}, 
 				{
-					title: "CTO 메세지",
+					title: "발표 논문",
 					url: "/papers"
 				}
 			]
@@ -60,7 +60,7 @@ export default function App(props) {
 	return (
 		<React.Fragment>
 			<Header sections={ sections } />
-			<Body sections={ sections } />
+			<Body />
 			<Footer />
 		</React.Fragment>
 	);

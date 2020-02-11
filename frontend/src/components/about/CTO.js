@@ -61,7 +61,7 @@ export default function CTO(props) {
 					direction='column'
 					wrap='nowrap'
 					spacing={2}>
-					<Grid item xs justify='center'>
+					<Grid item xs justify='center' align='center'>
 						<img src={profileImg} className={ classes.profile } />
 					</Grid>
 					<Grid item xs >

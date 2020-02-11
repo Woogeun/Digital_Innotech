@@ -3,30 +3,18 @@ let news;
 
 export default news = [
     {
-        title: 'Foresic Tool Web Service',
-        type: 'video',
-        cols: 2,
-        date: 'from June 2015',
-        url: 'https://www.youtube.com/embed/3Ei98TXncoE', //무조건 이런 형식으로 작성해야 함!!!
-        description: 'This work was supported by the National Research Foundation of Korea(NRF) grant funded by the Korea overment(MEST) (No.2012R1A2A1A05026327).'
+        year: "2015년 6월",
+        descriptions: [
+        "영상 변형 공개 서비스 사이트 일반을 대상으로 오픈",
+        "30 여만 장 이상의 영상 분석 데이터 수집 및 분석"
+        ]
     },
     {
-        title: 'National Research Lab.(NRL)',
-        type: 'text',
-        date: 'from July 2007',
-        description: 'National Research Lab.(NRL) of Fusion Technology for Security. It is supported by the Korea Science and Engineering Foundation(KOSEF) funded by Korean Government, Ministry of Science and Technology.',
+        year: "2020년 3월",
+        descriptions: ["이미지 및 동영상 변형 탐지 솔루션 KAI_Forensic 2.0 출시"]
     },
     {
-        title: 'Center of Fusion Technology for Security(CFTS)',
-        type: 'text',
-        date: 'from June 2006',
-        description: 'Center of Fusion Technology for Security(CFTS) is operated from June, 2006. It is sponsored by KOCCA(Korea Creative Content Agency), KOMSCO (Korea Minting & Security Printing Corporation), NRF (National Research Foundation of Korea), and Many organizations. Prof. Lee is the director of the CFTS.',
+        year: "2020년",
+        descriptions: ["딥페이크 탐지 기술 개발"]
     },
-    {
-        title: 'Lab. Of Excellence(LOE)',
-        type: 'text',
-        cols: 2,
-        date: 'from September 2005',
-        description: 'The MMC Lab. was only selected in KAIST as the very best quality Lab. of the Universities in Korea from the Korea Industrial Technology Foundation(KOTEF). 50 Labs in all were selected in IT, BT, CT, NT areas in Korea. The program is supported by Ministry of Education & Human Resources Development, Ministry of Commerce, Industry and Energy, and Ministry of Labor.'
-    }
 ]
