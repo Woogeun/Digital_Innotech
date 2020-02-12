@@ -3,6 +3,7 @@ import PropTypes            from 'prop-types';
 
 import { makeStyles, useTheme }	from '@material-ui/core/styles';
 import { deepPurple }			from '@material-ui/core/colors';
+import { Grow } 				from '@material-ui/core';
 import Avatar 			from '@material-ui/core/Avatar';
 import Divider      	from '@material-ui/core/Divider';
 import Grid           	from '@material-ui/core/Grid';
@@ -47,8 +48,17 @@ export default function History(props) {
 	return (
 		<List className={ classes.list }>
 			{ history.map((content, i) => {
+				var delay = 300 * (i+1);
 				return (
+
 					<React.Fragment>
+						<Grow 
+						direction='up' 
+						in={true}  
+						style={{ 
+							transformOrigin: '-1',
+						}}
+						{...({ timeout: delay })}>
 						<ListItem className={ classes.listItem }>
 							<ListItemAvatar>
 								<Avatar className={ classes.yearText }>
@@ -61,9 +71,17 @@ export default function History(props) {
 								</Typography>
 							</ListItemText>
 						</ListItem>
+						</Grow>
 						{ content.description.map((details, i) => {
 							if (i != 0) {
 								return (
+									<Grow 
+									direction='up' 
+									in={true}  
+									style={{ 
+										transformOrigin: '0 0 0',
+									}}
+									{...({ timeout: delay })}>
 									<ListItem className={ classes.listItem }>
 										<ListItemText inset >
 											<Typography inset align='right' className={ classes.descriptionText }>
@@ -71,10 +89,12 @@ export default function History(props) {
 											</Typography>
 										</ListItemText>
 									</ListItem>
+									</Grow>
 								);
 							}
 						})}
 						<Divider variant='middle' compoment='li'/>
+					
 					</React.Fragment>
 				);
 			})}

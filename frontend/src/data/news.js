@@ -1,4 +1,3 @@
-import Type from 'data/types'
 let news;
 
 export default news = [
