@@ -2,22 +2,31 @@ import React, { useState }  from 'react';
 import PropTypes          	from 'prop-types';
 
 import { makeStyles, useTheme }	from '@material-ui/core/styles';
+import { Grow } 				from '@material-ui/core';
 import Grid       		from '@material-ui/core/Grid';
 import Paper 			from '@material-ui/core/Paper';
 import Typography     	from '@material-ui/core/Typography';
 
-import Career 		from 'data/career.js';
-import Greeting 	from 'data/greeting.js';
-import profileImg 	from 'assets/profile.png';
+import Career 			from 'data/career.js';
+import Greeting 		from 'data/greeting.js';
+import profileImg 		from 'assets/profile.png';
+import TextPost 		from 'components/post/TextPost';
+import YearDetailPost 	from 'components/post/YearDetailPost';
 
 
 const useStyles = makeStyles(theme => ({
 	container: {
 		minHeight: 100,
+		height: '100%'
+	},
+	column1: {
+		width: '100%',
+		// height: '100%'
 	},
 	profile: {
-		padding: theme.spacing(4),
-		width: '50%',
+		padding: theme.spacing(0),
+		// width: '50%',
+		// height: '100%'
 	},
 	career: {
 		padding: theme.spacing(1),
@@ -25,7 +34,6 @@ const useStyles = makeStyles(theme => ({
 	},
 	careerText: {
 		fontFamily: 'Raleway',
-		fontSize: 11,
 		color: '#323232'
 	},
 	greeting: {
@@ -34,14 +42,16 @@ const useStyles = makeStyles(theme => ({
 	},
 	greetingText: {
 		fontFamily: 'Raleway',
-		fontSize: 17,
+		// fontSize: 17,
 		color: '#323232'
 	},
 	details: {
-		display: 'flex',
-		flexDirection: 'column',
+		ontFamily: 'Raleway',
+		// fontSize: 11,
+		color: '#323232'
 	},
 }));
+
 
 export default function CTO(props) {
 	const classes = useStyles();
@@ -53,45 +63,42 @@ export default function CTO(props) {
 			container 
 			justify='center'
 			className={ classes.container } 
-			spacing={2}>
+			spacing={2} >
 				<Grid 
 					container
 					item
 					xs={5}
 					direction='column'
-					wrap='nowrap'
+					className={ classes.column1 }
 					spacing={2}>
-					<Grid item xs justify='center' align='center'>
-						<img src={profileImg} className={ classes.profile } />
+					<Grid container item align='center' justify='center' >
+						<Grid item>
+							<Paper className={ classes.profile }>
+								<img src={profileImg}  />
+							</Paper>
+						</Grid>
 					</Grid>
-					<Grid item xs >
-						<Paper elevation={3}  className={ classes.career }>
-							<Typography align='left' className={ classes.careerText }>
-							교육
-							<br/>
-							{
-								Career.education.map( content => {
-									return (<span>{ content.year } : { content.description }<br/></span>);
-							})}
-							<br/>
-							경력
-							<br/>
-							{
-								Career.details.map( content => {
-									return (<span>{ content.year } : { content.description }<br/></span>);		
-							})}
+					<Grid item >
+						<Paper elevation={2}  className={ classes.career } >
+							<Typography className={ classes.careerText } variant='subtitle2'>
+								교육
 							</Typography>
+							<YearDetailPost yearDetail={ Career.education } type='caption'/>
+							<br/>
+							<Typography className={ classes.careerText } variant='subtitle2'>
+								경력
+							</Typography>
+							<YearDetailPost yearDetail={ Career.details } type='caption'/>
 						</Paper>
 					</Grid>
 				</Grid>
-				<Grid item xs >
-					<Paper className={ classes.greeting } elevation={3}>
-						<Typography align='left' className={ classes.greetingText }>
-							{
-								Greeting.split('\n').map( content => {
-									return (<span>{content}<br/></span>);
-						})}
+				<Grid item xs className={ classes.column2 }>
+					<Paper className={ classes.greeting } elevation={2}>
+						<Typography variant='subtitle1'>
+							기술자문/창업자 메시지
 						</Typography>
+						<br/>
+						<TextPost content={ Greeting } doubleBreak={true} type='body1'/>
 					</Paper> 
 				</Grid>
 			</Grid>

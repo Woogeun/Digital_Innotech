@@ -10,7 +10,8 @@ import Tab 				from '@material-ui/core/Tab';
 import Tabs 			from '@material-ui/core/Tabs';
 import Typography 		from '@material-ui/core/Typography';
 
-import papers from 'data/papers.js'
+import papers from 'data/papers.js';
+import TextListPost from 'components/post/TextListPost';
 
 
 function a11yProps(index) {
@@ -69,21 +70,13 @@ export default function Papers(props) {
 				<Typography variant='h6'>
 					국제 저널
 				</Typography>
-				{ papers.journals.map(content => {
-					return (
-						<p> {content} </p>
-					);
-				})}
+				<TextListPost content={papers.journals} type='body1'/>
 			</TabPanel>
 			<TabPanel value={value} index={1}>
 				<Typography variant='h6'>
 					국제 학술 대회
 				</Typography>
-				{ papers.conference.map(content => {
-					return (
-						<p> {content} </p>
-					);
-				})}
+				<TextListPost content={papers.journals} type='body1'/>
 			</TabPanel>
 		</Paper>
 	);  

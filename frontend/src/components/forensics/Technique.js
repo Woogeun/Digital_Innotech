@@ -12,7 +12,8 @@ import Paper           	from '@material-ui/core/Paper';
 import Typography       from '@material-ui/core/Typography';
 
 import forensicsImg from 'assets/forensics.png';
-import forensicsInfo from 'data/forensics.js'
+import forensicsInfo from 'data/forensics.js';
+import TextPost from 'components/post/TextPost';
 
 
 const useStyles = makeStyles(theme => ({
@@ -65,7 +66,7 @@ export default function Technique(props) {
 							why
 						</Typography>
 						<Typography className={ classes.detail }>
-							{ forensicsInfo.why }
+							<TextPost content={ forensicsInfo.why } type='body1'/>
 						</Typography>
 					</Paper>
 				</Grid>
@@ -75,21 +76,17 @@ export default function Technique(props) {
 							how
 						</Typography>
 						<Typography className={ classes.detail }>
-							{ forensicsInfo.how }
+							<TextPost content={ forensicsInfo.how } type='body1'/>
 						</Typography>
 					</Paper>
 				</Grid>
 				<Grid item xs={12} >
 					<Paper elevation={1} className={ classes.content }>
-						<Typography className={ classes.title }>
+						<Typography className={ classes.title } >
 							now
 						</Typography>
 						<Typography className={ classes.detail }>
-							{ forensicsInfo.now.split('\n').map(detail => {
-								return (
-									<span>{detail}<br/></span>
-								);
-							})}
+							<TextPost content={ forensicsInfo.now } type='body1'/>
 						</Typography>
 					</Paper>
 				</Grid>

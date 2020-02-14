@@ -8,17 +8,19 @@ import CardMedia 						from '@material-ui/core/CardMedia';
 import Carousel 						from 'react-material-ui-carousel'
 import Grid 							from '@material-ui/core/Grid';
 import Paper 							from '@material-ui/core/Paper';
+import Typography 						from '@material-ui/core/Typography';
 
 import kai_forensics 	from 'data/kai_forensics.js';
 import networkImg1 		from 'assets/network1.png';
 import networkImg2 		from 'assets/network2.png';
 import networkImg3 		from 'assets/network3.png';
 import networkImg4 		from 'assets/network4.png';
+import TextPost from 'components/post/TextPost';
 
 
 const useStyles = makeStyles(theme => ({
 	card: {
-		backgroundColor: '#FAFAFA',
+		// backgroundColor: '#FAFAFA',
 		margin: theme.spacing(2, 0),
 		minHeight: 400,
 		display: 'flex',
@@ -28,7 +30,10 @@ const useStyles = makeStyles(theme => ({
 	media: {
 		opacity: '90%',
 		width: '100%',// 16:9
-		height: '100%'
+		// height: '100%'
+	},
+	text: {
+		padding: theme.spacing(2),
 	}
 }));
 							
@@ -42,7 +47,6 @@ export default function KAI_Forensics(props) {
 
 	return (
 		<Grid container justify='center' spacing={2} >
-			
 			<Grid item xs={12}>
 				<Carousel interval={5000} >
 					{ imgs.map(img => {
@@ -50,19 +54,24 @@ export default function KAI_Forensics(props) {
 							<Paper className={ classes.card }>
 								<img src={img} className={ classes.media } />
 							</Paper>
-							
 						);
 					})}
 				</Carousel>
 			</Grid>
 			<Grid item xs >
-				<Paper square >
-					{ kai_forensics.image }
+				<Paper square className={ classes.text }>
+					<Typography variant='body1'>
+						이미지 변형 탐지(JPEG 기반)
+					</Typography>
+					<TextPost content={ kai_forensics.image } type='body2'/>
 				</Paper>
 			</Grid>
 			<Grid item xs >
-				<Paper square >
-					{ kai_forensics.video }
+				<Paper square className={ classes.text }>
+					<Typography variant='body1'>
+						동영상 변형 탐지(H.264 기반)
+					</Typography>
+					<TextPost content={ kai_forensics.video } type='body2'/>
 				</Paper>
 			</Grid>
 		</Grid>

@@ -5,7 +5,7 @@ import { Route, Switch } 	from 'react-router-dom';
 import { makeStyles } 	from '@material-ui/core/styles';
 import Grid 			from '@material-ui/core/Grid';
 
-import Home 			from 'components/about/Home';
+import Home 			from 'components/Home';
 import CTO 				from 'components/about/CTO';
 import History 			from 'components/about/History';
 import Introduction 	from 'components/about/Introduction';
@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
 		margin: 0,
 		padding: 0,
 		minWidth: 1024,
-		minHeight: 768,
+		minHeight: 100,
 	},
 	container: {
 		padding: 10,

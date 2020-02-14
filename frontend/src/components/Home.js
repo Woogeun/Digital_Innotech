@@ -34,8 +34,7 @@ export default function Home(props) {
 				<CardMedia
 					component="img"
 					className={classes.media}
-					image={mainImg}
-					title="Live from space album cover"/>
+					image={mainImg}/>
 			</Card>
 		</React.Fragment>
 	);

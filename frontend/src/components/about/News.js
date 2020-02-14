@@ -16,10 +16,11 @@ import news from 'data/news.js';
 
 const useStyles = makeStyles(theme => ({
 	root: {
-
+		
 	},
 	info: {
 		minHeight: 400,
+		maxWidth: 250,
 		padding: theme.spacing(1),
 		// backgroundColor: 'gray'
 	},
@@ -78,7 +79,7 @@ export default function News(props) {
 										<Typography item className={ classes.descriptionText}>
 											{ content.descriptions.map(description => {
 												return (
-													<span>{description}<br/><br/></span>
+													<span><br/>{description}<br/></span>
 												);
 											})}
 										</Typography>
