@@ -4,6 +4,8 @@ import { Route, Switch } 	from 'react-router-dom';
 
 import { makeStyles } 	from '@material-ui/core/styles';
 import Grid 			from '@material-ui/core/Grid';
+import Paper 			from '@material-ui/core/Paper';
+import Typography 		from '@material-ui/core/Typography';
 
 import Home 			from 'components/Home';
 import CTO 				from 'components/about/CTO';
@@ -22,6 +24,17 @@ const useStyles = makeStyles(theme => ({
 		minWidth: 1024,
 		minHeight: 100,
 	},
+	title: {
+		height: 100,
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'center',
+		borderBottom: `1px solid ${theme.palette.divider}`,
+
+	},
+	text: {
+		// fontSize: 20,
+	},
 	container: {
 		padding: 10,
 	}
@@ -30,9 +43,23 @@ const useStyles = makeStyles(theme => ({
 
 export default function Body(props) {
 	const classes = useStyles();
+	var title = window.location.pathname.split('/')[1].toUpperCase();
+	if (title == 'INTRODUCTION') {
+		title = 'DIGITAL INNOTECH';
+	}
 
 	return (
-		<Grid container justify='center' className={ classes.root }>
+		<Grid container justify='center' className={ classes.root } spacing={2}>
+			{ title != '' ? 
+				<Grid item xs={10} >
+					<Paper square elevation={.1} className={ classes.title }>
+						<Typography align='center' className={ classes.text } variant='h6'>
+							{ title }
+						</Typography>
+					</Paper>
+				</Grid>
+				: null
+			}
 			<Grid item xs={8} className={ classes.container }>
 				<Switch>
 					<Route exact path="/" 				component={() => <Home />} />
@@ -48,6 +75,7 @@ export default function Body(props) {
 					<Route exact path="/papers" 		component={() => <Papers />} />
 				</Switch>
 			</Grid>
+
 		</Grid>
 	);	
 }
