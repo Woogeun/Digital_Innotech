@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
 
 	},
 	text: {
-		// fontSize: 20,
+		color: '#444444'
 	},
 	container: {
 		padding: 10,

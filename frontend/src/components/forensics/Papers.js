@@ -76,7 +76,7 @@ export default function Papers(props) {
 				<Typography variant='h6'>
 					국제 학술 대회
 				</Typography>
-				<TextListPost content={papers.journals} type='body1'/>
+				<TextListPost content={papers.conference} type='body1'/>
 			</TabPanel>
 		</Paper>
 	);  

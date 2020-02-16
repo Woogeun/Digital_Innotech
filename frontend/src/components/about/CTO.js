@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
 		color: '#323232'
 	},
 	greeting: {
-		height: '100%',
+		height: '95.5%',
 		padding: theme.spacing(2),
 	},
 	greetingText: {
@@ -73,13 +73,17 @@ export default function CTO(props) {
 					spacing={2}>
 					<Grid container item align='center' justify='center' >
 						<Grid item>
-							<Paper className={ classes.profile }>
+							<Paper square className={ classes.profile }>
 								<img src={profileImg}  />
 							</Paper>
 						</Grid>
 					</Grid>
 					<Grid item >
 						<Paper elevation={2}  className={ classes.career } >
+							<Typography>
+								이흥규
+							</Typography>
+							<br/>
 							<Typography className={ classes.careerText } variant='subtitle2'>
 								교육
 							</Typography>

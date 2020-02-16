@@ -2,6 +2,7 @@ import React, { useState } 	from 'react';
 import PropTypes 			from 'prop-types';
 
 import { makeStyles } 	from '@material-ui/core/styles';
+import { Grow } 		from '@material-ui/core';
 import Box      		from '@material-ui/core/Box';
 import Paper      		from '@material-ui/core/Paper';
 import Typography 		from '@material-ui/core/Typography';
@@ -17,6 +18,15 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
+const growStyles = (order => {
+	return ({
+		direction: 'up',
+		in: true,
+		style: { 'transformOrigin': '-1' },
+		timeout: 100 * (order + 1)
+	});
+});
+
 export default function ImageOrderPost(props) {
 	const classes = useStyles();
 	const { img, order } = props;
@@ -25,16 +35,18 @@ export default function ImageOrderPost(props) {
 	const opacity = (100 - 10 * order).toString() + '%';
 
 	return (
-		<Box 
-		zIndex={z} 
-		left={left} 
-		position='absolute' 
-		style={ {opacity: opacity} }
-		className={ classes.card }>
-			<Paper>
-				<img src={img} className={ classes.media } />
-			</Paper>
-		</Box>
+		<Grow {...growStyles(order)}>
+			<Box 
+			zIndex={z} 
+			left={left} 
+			position='absolute' 
+			style={ {opacity: '100%'} }
+			className={ classes.card }>
+				<Paper>
+					<img src={img} className={ classes.media } />
+				</Paper>
+			</Box>
+		</Grow>
 	);
 }
 
