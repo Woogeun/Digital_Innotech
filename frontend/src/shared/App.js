@@ -14,7 +14,7 @@ export default function App(props) {
 			subSections: [
 				{
 					title: "CTO 메세지",
-					url: "/message"
+					url: "/CTO"
 				}, 
 				{
 					title: "회사 연혁",

@@ -1,5 +1,5 @@
-import React, { useState }  from 'react';
-import PropTypes            from 'prop-types';
+import React, { useState, useEffect }	from 'react';
+import PropTypes            			from 'prop-types';
 
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Box      				from '@material-ui/core/Box';
@@ -9,7 +9,6 @@ import GetAppIcon       		from '@material-ui/icons/GetApp';
 import Paper       				from '@material-ui/core/Paper';
 import Typography       		from '@material-ui/core/Typography';
 
-import pdf from 'assets/KAI_Forensics.pdf';
 import img1 from 'assets/KAI_Forensics_1.jpg';
 import img2 from 'assets/KAI_Forensics_2.jpg';
 import img3 from 'assets/KAI_Forensics_3.jpg';
@@ -21,7 +20,8 @@ import img8 from 'assets/KAI_Forensics_8.jpg';
 import img9 from 'assets/KAI_Forensics_9.jpg';
 import img10 from 'assets/KAI_Forensics_10.jpg';
 import img11 from 'assets/KAI_Forensics_11.jpg';
-import ImageOrderPost from 'components/post/ImageOrderPost'
+import ImageOrderPost 	from 'components/post/ImageOrderPost'
+import requestServer 	from 'requestServer';
 
 
 const useStyles = makeStyles(theme => ({
@@ -54,6 +54,11 @@ export default function Introduction(props) {
 	const classes = useStyles();
 	const theme = useTheme();
 	const imgs = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11];
+	const [pdf, setPdf] 			= useState(null);
+	// const [pdfImage, setPdfImage] 	= useState(null);
+
+	useEffect(requestServer('about/introduction', 'pdf', 'pdf', setPdf), []);
+	// useEffect(requestServer('about/introduction', 'pdfimage', 'image', setPdfImage), []);
 
 	return (
 		<Grid container justify='center'>
@@ -69,7 +74,7 @@ export default function Introduction(props) {
 					회사 소개 자료 다운로드
 				</Typography>
 				<Button>
-					<a href={pdf}>
+					<a href={pdf} download >
 						<GetAppIcon color='primary' fontSize='large' />
 					</a>
 				</Button>

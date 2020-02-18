@@ -64,7 +64,7 @@ export default function Body(props) {
 				<Switch>
 					<Route exact path="/" 				component={() => <Home />} />
 					
-					<Route exact path="/message" 		component={() => <CTO />} />
+					<Route exact path="/cto" 		component={() => <CTO />} />
 					<Route exact path="/history" 		component={() => <History />} />
 					<Route exact path="/introduction" 	component={() => <Introduction />} />
 					<Route exact path="/news" 			component={() => <News />} />

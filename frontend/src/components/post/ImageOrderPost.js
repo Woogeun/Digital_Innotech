@@ -10,12 +10,12 @@ import Typography 		from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(theme => ({
 	card: {
-		
+		backgroundColor: 'white'
 	},
 	media: {
 		height: 400,
 		
-	},
+	}
 }));
 
 const growStyles = (order => {
@@ -40,9 +40,8 @@ export default function ImageOrderPost(props) {
 			zIndex={z} 
 			left={left} 
 			position='absolute' 
-			style={ {opacity: '100%'} }
 			className={ classes.card }>
-				<Paper>
+				<Paper style={ {opacity: opacity} }>
 					<img src={img} className={ classes.media } />
 				</Paper>
 			</Box>

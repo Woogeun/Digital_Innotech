@@ -11,11 +11,11 @@ def returnLogo(request):
 
 	try:
 		with open(valid_image, "rb") as f:
-			print("no exception")
 			return HttpResponse(f.read(), content_type="image/jpeg")
+
 	except IOError:
-		print("yes exception")
 		red = Image.new('RGBA', (1, 1), (255,0,0,0))
 		response = HttpResponse(content_type="image/jpeg")
 		red.save(response, "JPEG")
+
 	return response

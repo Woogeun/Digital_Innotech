@@ -1,5 +1,5 @@
-import React, { useState } 	from 'react';
-import PropTypes 			from 'prop-types';
+import React, { useState, useEffect } 	from 'react';
+import PropTypes 						from 'prop-types';
 
 import { makeStyles } 	from '@material-ui/core/styles';
 import Box 				from '@material-ui/core/Box';
@@ -12,6 +12,7 @@ import Typography 		from '@material-ui/core/Typography';
 
 import papers from 'data/papers.js';
 import TextListPost from 'components/post/TextListPost';
+import requestServer from 'requestServer';
 
 
 function a11yProps(index) {

@@ -1,39 +1,41 @@
-import React, { useState }  from 'react';
-import PropTypes            from 'prop-types';
+import React, { useState, useEffect }	from 'react';
+import PropTypes            			from 'prop-types';
 
-import { makeStyles, useTheme }			from '@material-ui/core/styles';
-import Box 								from '@material-ui/core/Box';
-import Card 							from '@material-ui/core/Card';
-import CardMedia 						from '@material-ui/core/CardMedia';
-import Carousel 						from 'react-material-ui-carousel'
-import Grid 							from '@material-ui/core/Grid';
-import Paper 							from '@material-ui/core/Paper';
-import Typography 						from '@material-ui/core/Typography';
+import { makeStyles, useTheme }	from '@material-ui/core/styles';
+import Box 						from '@material-ui/core/Box';
+import Card 					from '@material-ui/core/Card';
+import CardMedia 				from '@material-ui/core/CardMedia';
+import Carousel 				from 'react-material-ui-carousel'
+import Grid 					from '@material-ui/core/Grid';
+import Paper 					from '@material-ui/core/Paper';
+import Typography 				from '@material-ui/core/Typography';
 
-import kai_forensics 	from 'data/kai_forensics.js';
 import networkImg1 		from 'assets/network1.png';
 import networkImg2 		from 'assets/network2.png';
 import networkImg3 		from 'assets/network3.png';
 import networkImg4 		from 'assets/network4.png';
-import TextPost from 'components/post/TextPost';
+import requestServer 	from 'requestServer';
+import TextPost 		from 'components/post/TextPost';
+
 
 
 const useStyles = makeStyles(theme => ({
 	card: {
 		// backgroundColor: '#FAFAFA',
 		margin: theme.spacing(2, 0),
-		minHeight: 400,
+		height: 400,
 		display: 'flex',
 		justifyContent: "center",
 		flexDirection: "column",
 	},
 	media: {
 		opacity: '90%',
-		width: '100%',// 16:9
+		width: '90%',// 16:9
 		// height: '100%'
 	},
 	text: {
 		padding: theme.spacing(2),
+		height: '90%'
 	}
 }));
 							
@@ -43,7 +45,14 @@ export default function KAI_Forensics(props) {
 	const classes = useStyles();
 	const theme = useTheme();
 	const imgs = [networkImg1, networkImg2, networkImg3, networkImg4];
-	const [handleOpen, setHandleOpen] = useState({ open: false });
+
+	const [imageDetection, setImageDetection] 	= useState({title: 'Not defined', content: 'Not defined'});
+	const [videoDetection, setVideoDetection] 	= useState({title: 'Not defined', content: 'Not defined'});
+	// const [network, setNetwork] 				= useState('Not loaded');
+
+	useEffect(requestServer('solution/kaiforensics', 'imagedetection', 'json', setImageDetection), []);
+	useEffect(requestServer('solution/kaiforensics', 'videodetection', 'json', setVideoDetection), []);
+	// useEffect(requestServer('solution/network', 'network', false, setNetwork), []);
 
 	return (
 		<Grid container justify='center' spacing={2} >
@@ -61,17 +70,19 @@ export default function KAI_Forensics(props) {
 			<Grid item xs >
 				<Paper square className={ classes.text }>
 					<Typography variant='body1'>
-						이미지 변형 탐지(JPEG 기반)
+						{ imageDetection.title }
 					</Typography>
-					<TextPost content={ kai_forensics.image } type='body2'/>
+					<br/>
+					<TextPost content={ imageDetection.content } type='body2'/>
 				</Paper>
 			</Grid>
 			<Grid item xs >
 				<Paper square className={ classes.text }>
 					<Typography variant='body1'>
-						동영상 변형 탐지(H.264 기반)
+						{ videoDetection.title }
 					</Typography>
-					<TextPost content={ kai_forensics.video } type='body2'/>
+					<br/>
+					<TextPost content={ videoDetection.content } type='body2'/>
 				</Paper>
 			</Grid>
 		</Grid>

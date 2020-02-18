@@ -1,5 +1,5 @@
-import React, { useState }  from 'react';
-import PropTypes          	from 'prop-types';
+import React, { useState, useEffect }  from 'react';
+import PropTypes          				from 'prop-types';
 
 import { makeStyles, useTheme }	from '@material-ui/core/styles';
 import { Grow } 				from '@material-ui/core';
@@ -7,11 +7,9 @@ import Grid       		from '@material-ui/core/Grid';
 import Paper 			from '@material-ui/core/Paper';
 import Typography     	from '@material-ui/core/Typography';
 
-import Career 			from 'data/career.js';
-import Greeting 		from 'data/greeting.js';
-import profileImg 		from 'assets/profile.png';
 import TextPost 		from 'components/post/TextPost';
 import YearDetailPost 	from 'components/post/YearDetailPost';
+import requestServer 	from 'requestServer';
 
 
 const useStyles = makeStyles(theme => ({
@@ -56,6 +54,15 @@ const useStyles = makeStyles(theme => ({
 export default function CTO(props) {
 	const classes = useStyles();
 	const theme = useTheme();
+	const [education, setEducation] = useState('Not loaded');
+	const [career, setCareer] 		= useState('Not loaded');
+	const [message, setMessage] 	= useState('Not loaded');
+	const [profile, setProfile] 	= useState(null);
+
+	useEffect(requestServer('about/cto', 'education', 'text', setEducation), []);
+	useEffect(requestServer('about/cto', 'career', 'text', setCareer), []);
+	useEffect(requestServer('about/cto', 'message', 'text', setMessage), []);
+	useEffect(requestServer('about/cto', 'profile', 'image', setProfile), []);
 
 	return (
 		<React.Fragment>
@@ -74,7 +81,7 @@ export default function CTO(props) {
 					<Grid container item align='center' justify='center' >
 						<Grid item>
 							<Paper square className={ classes.profile }>
-								<img src={profileImg}  />
+								<img src={profile}  />
 							</Paper>
 						</Grid>
 					</Grid>
@@ -87,22 +94,18 @@ export default function CTO(props) {
 							<Typography className={ classes.careerText } variant='subtitle2'>
 								교육
 							</Typography>
-							<YearDetailPost yearDetail={ Career.education } type='caption'/>
-							<br/>
+							<TextPost content={ education } type='caption'/>
+							<br/><br/>
 							<Typography className={ classes.careerText } variant='subtitle2'>
 								경력
 							</Typography>
-							<YearDetailPost yearDetail={ Career.details } type='caption'/>
+							<TextPost content={ career } type='caption'/>
 						</Paper>
 					</Grid>
 				</Grid>
 				<Grid item xs className={ classes.column2 }>
 					<Paper className={ classes.greeting } elevation={2}>
-						<Typography variant='subtitle1'>
-							기술자문/창업자 메시지
-						</Typography>
-						<br/>
-						<TextPost content={ Greeting } doubleBreak={true} type='body1'/>
+						<TextPost content={ message } doubleBreak={true} type='body1'/>
 					</Paper> 
 				</Grid>
 			</Grid>
