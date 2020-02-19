@@ -14,9 +14,9 @@ import networkImg1 		from 'assets/network1.png';
 import networkImg2 		from 'assets/network2.png';
 import networkImg3 		from 'assets/network3.png';
 import networkImg4 		from 'assets/network4.png';
-import requestServer 	from 'requestServer';
-import TextPost 		from 'components/post/TextPost';
 
+import TextPost 		from 'components/post/TextPost';
+import requestServer 	from 'requestServer';
 
 
 const useStyles = makeStyles(theme => ({
@@ -48,11 +48,9 @@ export default function KAI_Forensics(props) {
 
 	const [imageDetection, setImageDetection] 	= useState({title: 'Not defined', content: 'Not defined'});
 	const [videoDetection, setVideoDetection] 	= useState({title: 'Not defined', content: 'Not defined'});
-	// const [network, setNetwork] 				= useState('Not loaded');
 
 	useEffect(requestServer('solution/kaiforensics', 'imagedetection', 'json', setImageDetection), []);
 	useEffect(requestServer('solution/kaiforensics', 'videodetection', 'json', setVideoDetection), []);
-	// useEffect(requestServer('solution/network', 'network', false, setNetwork), []);
 
 	return (
 		<Grid container justify='center' spacing={2} >

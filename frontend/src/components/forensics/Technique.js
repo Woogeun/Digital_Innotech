@@ -45,14 +45,14 @@ const useStyles = makeStyles(theme => ({
 export default function Technique(props) {
 	const classes = useStyles();
 	const theme = useTheme();
-	const [why, setWhy] 	= useState('Not loaded');
-	const [how, setHow] 	= useState('Not loaded');
-	const [now, setNow] 	= useState('Not loaded');
+	const [why, setWhy] 	= useState({title: 'Not loaded', content: 'Not loaded'});
+	const [how, setHow] 	= useState({title: 'Not loaded', content: 'Not loaded'});
+	const [now, setNow] 	= useState({title: 'Not loaded', content: 'Not loaded'});
 	const [image, setImage] = useState(null);
 
-	useEffect(requestServer('forensics/technique', 'why', 'text', setWhy), []);
-	useEffect(requestServer('forensics/technique', 'how', 'text', setHow), []);
-	useEffect(requestServer('forensics/technique', 'now', 'text', setNow), []);
+	useEffect(requestServer('forensics/technique', 'why', 'json', setWhy), []);
+	useEffect(requestServer('forensics/technique', 'how', 'json', setHow), []);
+	useEffect(requestServer('forensics/technique', 'now', 'json', setNow), []);
 	useEffect(requestServer('forensics/technique', 'image', 'image', setImage), []);
 	
 	return (
@@ -70,30 +70,30 @@ export default function Technique(props) {
 				<Grid item xs={6} >
 					<Paper elevation={1} className={ classes.content }>
 						<Typography className={ classes.title }>
-							WHY
+							{ why.title }
 						</Typography>
 						<Typography className={ classes.detail }>
-							<TextPost content={ why } type='body1'/>
+							<TextPost content={ why.content } type='body1'/>
 						</Typography>
 					</Paper>
 				</Grid>
 				<Grid item xs={6} >
 					<Paper elevation={1} className={ classes.content }>
 						<Typography className={ classes.title }>
-							HOW
+							{ how.title }
 						</Typography>
 						<Typography className={ classes.detail }>
-							<TextPost content={ how } type='body1'/>
+							<TextPost content={ how.content } type='body1'/>
 						</Typography>
 					</Paper>
 				</Grid>
 				<Grid item xs={12} >
 					<Paper elevation={1} className={ classes.content }>
 						<Typography className={ classes.title } >
-							NOW
+							{ now.title } 
 						</Typography>
 						<Typography className={ classes.detail }>
-							<TextPost content={ now } type='body1'/>
+							<TextPost content={ now.content } type='body1'/>
 						</Typography>
 					</Paper>
 				</Grid>

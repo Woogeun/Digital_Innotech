@@ -1,5 +1,5 @@
-import React, { useState }  from 'react';
-import PropTypes            from 'prop-types';
+import React, { useState, useEffect }  	from 'react';
+import PropTypes            			from 'prop-types';
 
 import { makeStyles, useTheme }	from '@material-ui/core/styles';
 import { deepPurple }			from '@material-ui/core/colors';
@@ -11,7 +11,8 @@ import Grid           	from '@material-ui/core/Grid';
 import Paper           	from '@material-ui/core/Paper';
 import Typography       from '@material-ui/core/Typography';
 
-import news from 'data/news.js';
+import TextPost 		from 'components/post/TextPost';
+import requestServer 	from 'requestServer';
 
 
 const useStyles = makeStyles(theme => ({
@@ -34,7 +35,8 @@ const useStyles = makeStyles(theme => ({
 		// marginRight: theme.spacing(2)
 	},
 	box: {
-		height: '100%'
+		height: '100%',
+		padding: theme.spacing(1),
 	},
 	descriptionText: {
 		fontFamily: 'Raleway',
@@ -46,6 +48,9 @@ const useStyles = makeStyles(theme => ({
 export default function News(props) {
 	const classes = useStyles();
 	const theme = useTheme();
+	const [news, setNews] = useState({list_of_json: []});
+
+	useEffect(requestServer('about/news', 'news', 'json', setNews), []);
 
 	return (
 		<Grid 
@@ -53,7 +58,7 @@ export default function News(props) {
 		justify='center' 
 		spacing={2}
 		className={ classes.root }>
-			{ news.map((content, i) => {
+			{ news.list_of_json.map((obj, i) => {
 				var delay = 500 * (i+1);
 				return (
 					<Grid 
@@ -71,24 +76,19 @@ export default function News(props) {
 							<Paper elevation={3} className={ classes.info }>
 								<Grid item xs>
 									<Typography item className={ classes.yearText }>
-										{ content.year }
+										{ obj.date }
 									</Typography>
 								</Grid>
 								<Grid item xs >
 									<Box height='100%' className={ classes.box }>
-										<Typography item className={ classes.descriptionText}>
-											{ content.descriptions.map(description => {
-												return (
-													<span><br/>{description}<br/></span>
-												);
-											})}
+										<Typography item className={ classes.descriptionText }>
+											<TextPost content={ obj.content } doubleBreak={true} />
 										</Typography>
 									</Box>
 								</Grid>
 							</Paper>
 						</Grow>
 					</Grid>
-					
 				);
 			})}
 		</Grid>

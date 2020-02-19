@@ -8,11 +8,12 @@ import { deepPurple }			from '@material-ui/core/colors';
 import Avatar 			from '@material-ui/core/Avatar';
 import Divider      	from '@material-ui/core/Divider';
 import Grid           	from '@material-ui/core/Grid';
-
 import ListItem 		from '@material-ui/core/ListItem';
 import ListItemText 	from '@material-ui/core/ListItemText';
 import ListItemAvatar 	from '@material-ui/core/ListItemAvatar';
 import Typography       from '@material-ui/core/Typography';
+
+import TextPost 		from 'components/post/TextPost';
 
 
 const useStyles = makeStyles(theme => ({
@@ -46,7 +47,7 @@ const growStyles = (order => {
 
 export default function HistoryPost(props) {
 	const classes = useStyles();
-	const { content, order } = props;
+	const { history, order } = props;
 
 	return (
 		<React.Fragment>
@@ -54,31 +55,17 @@ export default function HistoryPost(props) {
 				<ListItem className={ classes.listItem }>
 					<ListItemAvatar>
 						<Avatar className={ classes.yearText }>
-							{ content.year }
+							{ history.year }
 						</Avatar>
 					</ListItemAvatar>
 					<ListItemText >
 						<Typography align='right' className={ classes.descriptionText }>
-							{ content.description[0] }
+							<TextPost content={ history.content } doubleBreak={true} />
 						</Typography>
 					</ListItemText>
 				</ListItem>
 			</Grow>
-			{ content.description.map((details, i) => {
-				if (i != 0) {
-					return (
-						<Grow {...growStyles(i)}>
-						<ListItem className={ classes.listItem }>
-							<ListItemText inset >
-								<Typography inset align='right' className={ classes.descriptionText }>
-									{details}
-								</Typography>
-							</ListItemText>
-						</ListItem>
-						</Grow>
-					);
-				}
-			})}
+			
 			<Divider variant='middle' compoment='li'/>
 		</React.Fragment>
 	);
@@ -89,9 +76,9 @@ HistoryPost.defaultProps = {
 };
 
 HistoryPost.propTypes = {
-	content: PropTypes.shape({
-		year: PropTypes.string,
-		description: PropTypes.array
+	history: PropTypes.shape({
+		year: PropTypes.number,
+		content: PropTypes.string
 	}),
 	order: PropTypes.number
 };

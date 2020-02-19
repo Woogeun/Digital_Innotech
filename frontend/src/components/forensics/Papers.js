@@ -10,9 +10,8 @@ import Tab 				from '@material-ui/core/Tab';
 import Tabs 			from '@material-ui/core/Tabs';
 import Typography 		from '@material-ui/core/Typography';
 
-import papers from 'data/papers.js';
-import TextListPost from 'components/post/TextListPost';
-import requestServer from 'requestServer';
+import TextListPost 	from 'components/post/TextListPost';
+import requestServer 	from 'requestServer';
 
 
 function a11yProps(index) {
@@ -52,6 +51,11 @@ const useStyles = makeStyles(theme => ({
 export default function Papers(props) {
 	const classes = useStyles();
 	const [value, setValue] = React.useState(0);
+	const [journals, setJournals] 		= useState({list_of_text: []});
+	const [conferences, setConferences] = useState({list_of_text: []});
+
+	useEffect(requestServer('forensics/paper', 'journal', 'json', setJournals), []);
+	useEffect(requestServer('forensics/paper', 'conference', 'json', setConferences), []);
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
@@ -71,13 +75,13 @@ export default function Papers(props) {
 				<Typography variant='h6'>
 					국제 저널
 				</Typography>
-				<TextListPost content={papers.journals} type='body1'/>
+				<TextListPost content={ journals.list_of_text } type='body1'/>
 			</TabPanel>
 			<TabPanel value={value} index={1}>
 				<Typography variant='h6'>
 					국제 학술 대회
 				</Typography>
-				<TextListPost content={papers.conference} type='body1'/>
+				<TextListPost content={ conferences.list_of_text } type='body1'/>
 			</TabPanel>
 		</Paper>
 	);  
