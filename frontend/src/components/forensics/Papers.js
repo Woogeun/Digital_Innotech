@@ -3,8 +3,6 @@ import PropTypes 						from 'prop-types';
 
 import { makeStyles } 	from '@material-ui/core/styles';
 import Box 				from '@material-ui/core/Box';
-import Divider 			from '@material-ui/core/Divider';
-import Grid 			from '@material-ui/core/Grid';
 import Paper 			from '@material-ui/core/Paper';
 import Tab 				from '@material-ui/core/Tab';
 import Tabs 			from '@material-ui/core/Tabs';
@@ -62,7 +60,7 @@ export default function Papers(props) {
 	};
 
 	return (
-		<Paper square elevation={0}>
+		<Paper square elevation={0} className={ classes.root }>
 			<Tabs
             value={value}
             onChange={handleChange}

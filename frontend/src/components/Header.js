@@ -6,8 +6,8 @@ import Button 			from '@material-ui/core/Button';
 import ButtonGroup 		from '@material-ui/core/ButtonGroup';
 import Collapse 		from '@material-ui/core/Collapse';
 import Grid 			from '@material-ui/core/Grid';
-import Typography 		from '@material-ui/core/Typography';
 import Toolbar 			from '@material-ui/core/Toolbar';
+import Typography 		from '@material-ui/core/Typography';
 
 import requestServer 	from 'requestServer';
 
@@ -17,7 +17,6 @@ const useStyles = makeStyles(theme => ({
 		margin: theme.spacing(3, 0, 0, 0),
 		justifyContent: 'space-around',
 		overflowX: 'auto',
-		// textAlign: 'center',
 		borderBottom: `1px solid ${theme.palette.divider}`,
 		minWidth: 750,
 	},
@@ -28,7 +27,7 @@ const useStyles = makeStyles(theme => ({
 		padding: theme.spacing(3, 3, 0, 0),
 	},
 	buttonGroup: {
-		// position: 'absolute',
+		
 	}
 }));
 
@@ -96,8 +95,7 @@ export default function Header(props) {
 											<ButtonGroup
 												variant="text"
 												orientation="vertical"
-												color="primary"
-												>
+												color="primary">
 												{ section.subSections.map(subSection => (
 													<Button href={ subSection.url }>
 														{ subSection.title }

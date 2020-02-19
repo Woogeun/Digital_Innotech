@@ -6,21 +6,21 @@ import Box      				from '@material-ui/core/Box';
 import Button      				from '@material-ui/core/Button';
 import Grid      				from '@material-ui/core/Grid';
 import GetAppIcon       		from '@material-ui/icons/GetApp';
-import Paper       				from '@material-ui/core/Paper';
 import Typography       		from '@material-ui/core/Typography';
 
-import img1 from 'assets/KAI_Forensics_1.jpg';
-import img2 from 'assets/KAI_Forensics_2.jpg';
-import img3 from 'assets/KAI_Forensics_3.jpg';
-import img4 from 'assets/KAI_Forensics_4.jpg';
-import img5 from 'assets/KAI_Forensics_5.jpg';
-import img6 from 'assets/KAI_Forensics_6.jpg';
-import img7 from 'assets/KAI_Forensics_7.jpg';
-import img8 from 'assets/KAI_Forensics_8.jpg';
-import img9 from 'assets/KAI_Forensics_9.jpg';
-import img10 from 'assets/KAI_Forensics_10.jpg';
-import img11 from 'assets/KAI_Forensics_11.jpg';
-import ImageOrderPost 	from 'components/post/ImageOrderPost'
+import pdf 				from 'assets/KAI_Forensics.pdf'
+import img1 			from 'assets/KAI_Forensics_1.jpg';
+import img2 			from 'assets/KAI_Forensics_2.jpg';
+import img3 			from 'assets/KAI_Forensics_3.jpg';
+import img4 			from 'assets/KAI_Forensics_4.jpg';
+import img5 			from 'assets/KAI_Forensics_5.jpg';
+import img6 			from 'assets/KAI_Forensics_6.jpg';
+import img7 			from 'assets/KAI_Forensics_7.jpg';
+import img8 			from 'assets/KAI_Forensics_8.jpg';
+import img9 			from 'assets/KAI_Forensics_9.jpg';
+import img10 			from 'assets/KAI_Forensics_10.jpg';
+import img11 			from 'assets/KAI_Forensics_11.jpg';
+import ImageOrderPost 	from 'components/post/ImageOrderPost';
 import requestServer 	from 'requestServer';
 
 
@@ -52,12 +52,11 @@ const useStyles = makeStyles(theme => ({
 
 export default function Introduction(props) {
 	const classes = useStyles();
-	const theme = useTheme();
 	const imgs = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11];
-	const [pdf, setPdf] 			= useState(null);
+	// const [pdf, setPdf] 			= useState(null);
 	// const [pdfImage, setPdfImage] 	= useState(null);
 
-	useEffect(requestServer('about/introduction', 'pdf', 'pdf', setPdf), []);
+	// useEffect(requestServer('about/introduction', 'pdf', 'pdf', setPdf), []);
 	// useEffect(requestServer('about/introduction', 'pdfimage', 'image', setPdfImage), []);
 
 	return (
@@ -74,7 +73,7 @@ export default function Introduction(props) {
 					회사 소개 자료 다운로드
 				</Typography>
 				<Button>
-					<a href={pdf} download >
+					<a href={pdf} >
 						<GetAppIcon color='primary' fontSize='large' />
 					</a>
 				</Button>

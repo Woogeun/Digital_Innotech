@@ -44,13 +44,13 @@ const useStyles = makeStyles(theme => ({
 export default function Body(props) {
 	const classes = useStyles();
 	var title = window.location.pathname.split('/')[1].toUpperCase();
-	if (title == 'INTRODUCTION') {
+	if (title === 'INTRODUCTION') {
 		title = 'DIGITAL INNOTECH';
 	}
 
 	return (
 		<Grid container justify='center' className={ classes.root } spacing={2}>
-			{ title != '' ? 
+			{ title !== '' ? 
 				<Grid item xs={10} >
 					<Paper square elevation={.1} className={ classes.title }>
 						<Typography align='center' className={ classes.text } variant='h6'>
@@ -64,7 +64,7 @@ export default function Body(props) {
 				<Switch>
 					<Route exact path="/" 				component={() => <Home />} />
 					
-					<Route exact path="/cto" 		component={() => <CTO />} />
+					<Route exact path="/cto" 			component={() => <CTO />} />
 					<Route exact path="/history" 		component={() => <History />} />
 					<Route exact path="/introduction" 	component={() => <Introduction />} />
 					<Route exact path="/news" 			component={() => <News />} />

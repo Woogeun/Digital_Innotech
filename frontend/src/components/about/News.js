@@ -4,9 +4,7 @@ import PropTypes            			from 'prop-types';
 import { makeStyles, useTheme }	from '@material-ui/core/styles';
 import { deepPurple }			from '@material-ui/core/colors';
 import { Grow } 				from '@material-ui/core';
-import Avatar 			from '@material-ui/core/Avatar';
 import Box 				from '@material-ui/core/Box';
-import Divider      	from '@material-ui/core/Divider';
 import Grid           	from '@material-ui/core/Grid';
 import Paper           	from '@material-ui/core/Paper';
 import Typography       from '@material-ui/core/Typography';
@@ -23,7 +21,6 @@ const useStyles = makeStyles(theme => ({
 		minHeight: 400,
 		maxWidth: 250,
 		padding: theme.spacing(1),
-		// backgroundColor: 'gray'
 	},
 	yearText: {
 		fontSize: 20,
@@ -31,8 +28,6 @@ const useStyles = makeStyles(theme => ({
 		backgroundColor: deepPurple[500],
 		textAlign: 'center',
 		opacity: '70%'
-		// width: '100%',
-		// marginRight: theme.spacing(2)
 	},
 	box: {
 		height: '100%',
@@ -47,7 +42,6 @@ const useStyles = makeStyles(theme => ({
 
 export default function News(props) {
 	const classes = useStyles();
-	const theme = useTheme();
 	const [news, setNews] = useState({list_of_json: []});
 
 	useEffect(requestServer('about/news', 'news', 'json', setNews), []);
@@ -69,9 +63,7 @@ export default function News(props) {
 						<Grow 
 						direction='up' 
 						in={true}  
-						style={{ 
-							transformOrigin: '0 0 0',
-						}}
+						style={{ transformOrigin: '0 0 0' }}
 						{...({ timeout: delay })}>
 							<Paper elevation={3} className={ classes.info }>
 								<Grid item xs>

@@ -2,11 +2,8 @@ import React, { useState, useEffect }  from 'react';
 import PropTypes            			from 'prop-types';
 
 import { makeStyles, useTheme }	from '@material-ui/core/styles';
-import { deepPurple }			from '@material-ui/core/colors';
-import { Grow } 				from '@material-ui/core';
 import Card           	from '@material-ui/core/Card';
 import CardMedia       	from '@material-ui/core/CardMedia';
-import Divider      	from '@material-ui/core/Divider';
 import Grid           	from '@material-ui/core/Grid';
 import Paper           	from '@material-ui/core/Paper';
 import Typography       from '@material-ui/core/Typography';
@@ -23,11 +20,9 @@ const useStyles = makeStyles(theme => ({
 	info: {
 		minHeight: 400,
 		paddingTop: theme.spacing(1),
-		// backgroundColor: 'gray'
 	},
 	content: {
 		padding: theme.spacing(1),
-		// backgroundColor: 'gray'
 	},
 	title: {
 		fontFamily: 'Raleway',
@@ -44,7 +39,6 @@ const useStyles = makeStyles(theme => ({
 
 export default function Technique(props) {
 	const classes = useStyles();
-	const theme = useTheme();
 	const [why, setWhy] 	= useState({title: 'Not loaded', content: 'Not loaded'});
 	const [how, setHow] 	= useState({title: 'Not loaded', content: 'Not loaded'});
 	const [now, setNow] 	= useState({title: 'Not loaded', content: 'Not loaded'});

@@ -1,14 +1,12 @@
 import React, { useState, useEffect }  from 'react';
 import PropTypes          				from 'prop-types';
 
-import { makeStyles, useTheme }	from '@material-ui/core/styles';
-import { Grow } 				from '@material-ui/core';
+import { makeStyles }	from '@material-ui/core/styles';
 import Grid       		from '@material-ui/core/Grid';
 import Paper 			from '@material-ui/core/Paper';
 import Typography     	from '@material-ui/core/Typography';
 
 import TextPost 		from 'components/post/TextPost';
-import YearDetailPost 	from 'components/post/YearDetailPost';
 import requestServer 	from 'requestServer';
 
 
@@ -19,12 +17,9 @@ const useStyles = makeStyles(theme => ({
 	},
 	column1: {
 		width: '100%',
-		// height: '100%'
 	},
 	profile: {
 		padding: theme.spacing(0),
-		// width: '50%',
-		// height: '100%'
 	},
 	career: {
 		padding: theme.spacing(1),
@@ -40,12 +35,10 @@ const useStyles = makeStyles(theme => ({
 	},
 	greetingText: {
 		fontFamily: 'Raleway',
-		// fontSize: 17,
 		color: '#323232'
 	},
 	details: {
 		ontFamily: 'Raleway',
-		// fontSize: 11,
 		color: '#323232'
 	},
 }));
@@ -53,7 +46,6 @@ const useStyles = makeStyles(theme => ({
 
 export default function CTO(props) {
 	const classes = useStyles();
-	const theme = useTheme();
 	const [education, setEducation] = useState('Not loaded');
 	const [career, setCareer] 		= useState('Not loaded');
 	const [message, setMessage] 	= useState('Not loaded');
