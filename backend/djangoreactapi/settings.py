@@ -71,8 +71,8 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_WHITELIST = ( # add
-    'http://localhost:3000',
-    # 'http://localhost:3030',
+    'http://localhost:3000', # Main homepage
+    'http://localhost:3030', # Homepage for modification
 )
 
 ROOT_URLCONF = 'djangoreactapi.urls'

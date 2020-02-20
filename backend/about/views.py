@@ -43,10 +43,10 @@ def returnProfile(request):
 
 # History
 def returnHistory(request):
-	obj = list(History.objects.all())[-1]
+	objs = list(History.objects.all())
+	list_of_json = [{'year': obj.year, 'content': obj.content} for obj in objs]
 	return JsonResponse({
-		'year': obj.year,
-		'content': obj.content
+		'list_of_json': list_of_json
 	});
 
 
@@ -71,10 +71,10 @@ def returnPdf(request):
 
 # News
 def returnNews(request):
-	obj = list(News.objects.all())[-1]
+	objs = list(News.objects.all())
+	list_of_json = [{'date': obj.date, 'content': obj.content} for obj in objs]
 	return JsonResponse({
-		'date': obj.date,
-		'content': obj.content
+		'list_of_json': list_of_json
 	});
 
 

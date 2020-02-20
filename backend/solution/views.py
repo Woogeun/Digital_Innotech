@@ -17,13 +17,17 @@ def returnVideoDetection(request):
 		'content': obj.content
 	})
 def returnNetwork(request):
-	valid_image = list(Network.objects.all())[-1].image.path
-	try:
-		with open(valid_image, "rb") as f:
-			return HttpResponse(f.read(), content_type="image/jpeg")
-	except IOError:
-		red = Image.new('RGBA', (1, 1), (255,0,0,0))
-		response = HttpResponse(content_type="image/jpeg")
-		red.save(response, "JPEG")
+	images = list(Network.objects.all())
+	list_of_image = [open(image.image.path).read() for image in images]
+	return JsonResponse({
+		'list_of_image': list_of_image
+	})
+	# try:
+	# 	with open(valid_image, "rb") as f:
+	# 		return HttpResponse(f.read(), content_type="image/jpeg")
+	# except IOError:
+	# 	red = Image.new('RGBA', (1, 1), (255,0,0,0))
+	# 	response = HttpResponse(content_type="image/jpeg")
+	# 	red.save(response, "JPEG")
 
-	return response
+	# return response

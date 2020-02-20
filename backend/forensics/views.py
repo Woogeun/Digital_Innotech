@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from rest_framework import generics
 
@@ -6,13 +6,25 @@ from .models import *
 
 # Technique
 def returnWhy(request):
-	return HttpResponse(list(Why.objects.all())[-1].content)
+	obj = list(Why.objects.all())[-1]
+	return JsonResponse({
+		'title': obj.title,
+		'content': obj.content
+	})
 
 def returnHow(request):
-	return HttpResponse(list(How.objects.all())[-1].content)
+	obj = list(How.objects.all())[-1]
+	return JsonResponse({
+		'title': obj.title,
+		'content': obj.content
+	})
 
 def returnNow(request):
-	return HttpResponse(list(Now.objects.all())[-1].content)
+	obj = list(Now.objects.all())[-1]
+	return JsonResponse({
+		'title': obj.title,
+		'content': obj.content
+	})
 
 def returnImage(request):
 	valid_image = list(Image.objects.all())[-1].image.path
@@ -29,10 +41,35 @@ def returnImage(request):
 
 # Paper
 def returnJournal(request):
-	return HttpResponse(list(Journal.objects.all())[-1].content)
+	objs = list(Journal.objects.all())
+	list_of_text = [obj.content for obj in objs]
+	return JsonResponse({
+		'list_of_text': list_of_text
+	})
 
 def returnConference(request):
-	return HttpResponse(list(Conference.objects.all())[-1].content)
+	objs = list(Conference.objects.all())
+	list_of_text = [obj.content for obj in objs]
+	return JsonResponse({
+		'list_of_text': list_of_text
+	})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
