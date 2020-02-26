@@ -12,9 +12,10 @@ import CTO 				from 'components/about/CTO';
 import History 			from 'components/about/History';
 import Introduction 	from 'components/about/Introduction';
 import News 			from 'components/about/News';
-import KAI_Forensics 	from 'components/solution/KAI_Forensics';
+import KAI_Forensics 	from 'components/pcSolution/KAI_Forensics';
 import Technique 		from 'components/forensics/Technique';
 import Papers 			from 'components/forensics/Papers';
+import Contact 			from 'components/Contact';
 
 
 const useStyles = makeStyles(theme => ({
@@ -73,6 +74,8 @@ export default function Body(props) {
 
 					<Route exact path="/technique" 		component={() => <Technique />} />
 					<Route exact path="/papers" 		component={() => <Papers />} />
+
+					<Route exact path="/contact" 		component={() => <Contact />} />
 				</Switch>
 			</Grid>
 

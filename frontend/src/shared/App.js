@@ -31,12 +31,22 @@ export default function App(props) {
 			]
 		},
 		{
-			title: "소프트웨어 솔루션",
-			url: "/solution",
+			title: "PC 솔루션",
+			url: "/pcSolution",
 			subSections: [
 				{
 					title: "KAI_Forensics 2.0",
 					url: "/kaiForensics"
+				}
+			]
+		},
+		{
+			title: "앱 솔루션",
+			url: "/appSolution",
+			subSections: [
+				{
+					title: "출시 예정",
+					url: "/none"
 				}
 			]
 		},
@@ -52,6 +62,13 @@ export default function App(props) {
 					title: "발표 논문",
 					url: "/papers"
 				}
+			]
+		},
+		{
+			title: "Contact",
+			url: "/contact",
+			subSections: [
+				
 			]
 		}
 	]
