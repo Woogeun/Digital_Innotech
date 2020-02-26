@@ -41,6 +41,14 @@ const useStyles = makeStyles(theme => ({
 		ontFamily: 'Raleway',
 		color: '#323232'
 	},
+	title: {
+		height: 100,
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'center',
+		borderBottom: `1px solid ${theme.palette.divider}`,
+
+	},
 }));
 
 
@@ -50,14 +58,23 @@ export default function CTO(props) {
 	const [career, setCareer] 		= useState('Not loaded');
 	const [message, setMessage] 	= useState('Not loaded');
 	const [profile, setProfile] 	= useState(null);
+	const [title, setTitle] 		= useState(null);
 
 	useEffect(requestServer('about/cto', 'education', 'text', setEducation), []);
 	useEffect(requestServer('about/cto', 'career', 'text', setCareer), []);
 	useEffect(requestServer('about/cto', 'message', 'text', setMessage), []);
 	useEffect(requestServer('about/cto', 'profile', 'image', setProfile), []);
+	useEffect(requestServer('about/cto', 'title', 'text', setTitle), []);
 
 	return (
-		<React.Fragment>
+		<Grid container justify='center' className={ classes.root } spacing={2}>
+			<Grid item xs={12} >
+				<Paper square elevation={.1} className={ classes.title }>
+					<Typography align='center' variant='h6'>
+						{ title }
+					</Typography>
+				</Paper>
+			</Grid>
 			<Grid 
 			container 
 			justify='center'
@@ -101,7 +118,7 @@ export default function CTO(props) {
 					</Paper> 
 				</Grid>
 			</Grid>
-		</React.Fragment>
+		</Grid>
 	);
 }
 

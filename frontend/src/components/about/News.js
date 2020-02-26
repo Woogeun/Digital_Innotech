@@ -37,14 +37,24 @@ const useStyles = makeStyles(theme => ({
 		fontFamily: 'Raleway',
 		fontSize: 17,
 		color: '#323232'
-	}
+	},
+	title: {
+		height: 100,
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'center',
+		borderBottom: `1px solid ${theme.palette.divider}`,
+
+	},
 }));
 
 export default function News(props) {
 	const classes = useStyles();
-	const [news, setNews] = useState({list_of_json: []});
+	const [news, setNews] 	= useState({list_of_json: []});
+	const [title, setTitle] = useState(null);
 
 	useEffect(requestServer('about/news', 'news', 'json', setNews), []);
+	useEffect(requestServer('about/news', 'title', 'text', setTitle), []);
 
 	return (
 		<Grid 
@@ -52,6 +62,13 @@ export default function News(props) {
 		justify='center' 
 		spacing={2}
 		className={ classes.root }>
+			<Grid item xs={12} >
+				<Paper square elevation={.1} className={ classes.title }>
+					<Typography align='center' variant='h6'>
+						{ title }
+					</Typography>
+				</Paper>
+			</Grid>
 			{ news.list_of_json.map((obj, i) => {
 				var delay = 500 * (i+1);
 				return (

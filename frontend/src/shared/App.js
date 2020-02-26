@@ -46,7 +46,7 @@ export default function App(props) {
 			subSections: [
 				{
 					title: "출시 예정",
-					url: "/none"
+					url: "/temp"
 				}
 			]
 		},
