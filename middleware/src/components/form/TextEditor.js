@@ -2,48 +2,53 @@ import React, { useState, useEffect }  	from 'react';
 import PropTypes            			from 'prop-types';
 
 import { makeStyles }	from '@material-ui/core/styles';
-import Card 			from '@material-ui/core/Card';
+import TextField 		from '@material-ui/core/TextField';
 
 import requestServer	from 'requestServer';
 
 
 const useStyles = makeStyles(theme => ({
-	card: {
-		backgroundColor: '#FAFAFA',
-		margin: theme.spacing(2, 0),
-		display: 'flex',
-		minHeight: 300,
+	root: {
+		// width: '100%',
+	},	
+	editor: {
 		width: '100%',
-	},
-	media: {
-		
 	},
 }));
 
 export default function TextEditor(props) {
 	const classes = useStyles();
-	const [home, setHome] = useState(null);
+	const { content } = props;
+	const [value, setValue] = useState(null);
 
-	useEffect(requestServer('about', 'home', 'image', setHome), []);
+	const handleChange = event => {
+		setValue(event.target.value);
+	}
+
+
+
+	// useEffect(requestServer('about', 'home', 'image', setHome), []);
 
 	return (
-		<React.Fragment>
-			<Card 
-			elevation={0}
-			className={classes.card}>
-				<CardMedia
-					component="img"
-					className={classes.media}
-					image={home}/>
-			</Card>
-		</React.Fragment>
+		<form className={ classes.root }>
+			<TextField 
+			className={ classes.editor }
+			label='Editor'
+			multiline
+			defaultValue={content}
+			value={value}
+			onChange={handleChange}
+			/>
+		</form>
 	);
 }
 
 TextEditor.defaultProps = {
+	content: 'Default value',
 
 };
 
 TextEditor.propTypes = {
+	content: PropTypes.string,
 
 };

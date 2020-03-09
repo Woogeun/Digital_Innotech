@@ -16,6 +16,9 @@ class Now(models.Model):
 class Image(models.Model):
 	image = models.ImageField(upload_to='assets/image')
 
+class TitleTechnique(models.Model):
+	content = models.TextField()
+
 
 # Paper
 class Journal(models.Model):
@@ -24,3 +27,5 @@ class Journal(models.Model):
 class Conference(models.Model):
 	content = models.TextField()
 
+class TitlePaper(models.Model):
+	content = models.TextField()

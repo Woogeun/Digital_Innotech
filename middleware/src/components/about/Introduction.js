@@ -6,6 +6,7 @@ import Box      				from '@material-ui/core/Box';
 import Button      				from '@material-ui/core/Button';
 import Grid      				from '@material-ui/core/Grid';
 import GetAppIcon       		from '@material-ui/icons/GetApp';
+import Paper		       		from '@material-ui/core/Paper';
 import Typography       		from '@material-ui/core/Typography';
 
 import pdf 				from 'assets/KAI_Forensics.pdf'
@@ -48,6 +49,14 @@ const useStyles = makeStyles(theme => ({
 		color: '#0000AA',
 		padding: theme.spacing(1)
 	},
+	title: {
+		height: 100,
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'center',
+		borderBottom: `1px solid ${theme.palette.divider}`,
+
+	},
 }));
 
 export default function Introduction(props) {
@@ -55,12 +64,21 @@ export default function Introduction(props) {
 	const imgs = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11];
 	// const [pdf, setPdf] 			= useState(null);
 	// const [pdfImage, setPdfImage] 	= useState(null);
+	const [title, setTitle] 		= useState(null);
 
 	// useEffect(requestServer('about/introduction', 'pdf', 'pdf', setPdf), []);
 	// useEffect(requestServer('about/introduction', 'pdfimage', 'image', setPdfImage), []);
+	useEffect(requestServer('about/introduction', 'title', 'text', setTitle), []);
 
 	return (
-		<Grid container justify='center'>
+		<Grid container justify='center' className={ classes.root } spacing={2}>
+			<Grid item xs={12} >
+				<Paper square elevation={.1} className={ classes.title }>
+					<Typography align='center' variant='h6'>
+						{ title }
+					</Typography>
+				</Paper>
+			</Grid>
 			<Box position='relative' className={ classes.container } >
 				{ imgs.map((img, i) => {
 					return (

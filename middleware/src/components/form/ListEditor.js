@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-export default function TextEditor(props) {
+export default function ListEditor(props) {
 	const classes = useStyles();
 	const [home, setHome] = useState(null);
 
@@ -40,10 +40,10 @@ export default function TextEditor(props) {
 	);
 }
 
-TextEditor.defaultProps = {
+ListEditor.defaultProps = {
 
 };
 
-TextEditor.propTypes = {
+ListEditor.propTypes = {
 
 };

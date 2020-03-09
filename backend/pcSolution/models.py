@@ -15,5 +15,6 @@ class VideoDetection(models.Model):
 class Network(models.Model):
 	image = models.ImageField(upload_to='assets/image')
 
-
+class TitleKAI_Forensics(models.Model):
+	content = models.TextField()
 

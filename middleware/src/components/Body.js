@@ -1,6 +1,6 @@
-import React, { useState } 	from 'react';
-import PropTypes 			from 'prop-types';
-import { Route, Switch } 	from 'react-router-dom';
+import React, { useState, useEffect }  	from 'react';
+import PropTypes 						from 'prop-types';
+import { Route, Switch } 				from 'react-router-dom';
 
 import { makeStyles } 	from '@material-ui/core/styles';
 import Grid 			from '@material-ui/core/Grid';
@@ -12,9 +12,14 @@ import CTO 				from 'components/about/CTO';
 import History 			from 'components/about/History';
 import Introduction 	from 'components/about/Introduction';
 import News 			from 'components/about/News';
-import KAI_Forensics 	from 'components/solution/KAI_Forensics';
+import KAI_Forensics 	from 'components/pcSolution/KAI_Forensics';
+import Temp 			from 'components/appSolution/Temp';
 import Technique 		from 'components/forensics/Technique';
 import Papers 			from 'components/forensics/Papers';
+import Contact 			from 'components/Contact';
+
+
+import requestServer	from 'requestServer';
 
 
 const useStyles = makeStyles(theme => ({
@@ -43,23 +48,9 @@ const useStyles = makeStyles(theme => ({
 
 export default function Body(props) {
 	const classes = useStyles();
-	var title = window.location.pathname.split('/')[1].toUpperCase();
-	if (title === 'INTRODUCTION') {
-		title = 'DIGITAL INNOTECH';
-	}
 
 	return (
 		<Grid container justify='center' className={ classes.root } spacing={2}>
-			{ title !== '' ? 
-				<Grid item xs={10} >
-					<Paper square elevation={.1} className={ classes.title }>
-						<Typography align='center' className={ classes.text } variant='h6'>
-							{ title }
-						</Typography>
-					</Paper>
-				</Grid>
-				: null
-			}
 			<Grid item xs={8} className={ classes.container }>
 				<Switch>
 					<Route exact path="/" 				component={() => <Home />} />
@@ -70,9 +61,12 @@ export default function Body(props) {
 					<Route exact path="/news" 			component={() => <News />} />
 
 					<Route exact path="/kaiForensics" 	component={() => <KAI_Forensics />} />
+					<Route exact path="/temp" 			component={() => <Temp />} />
 
 					<Route exact path="/technique" 		component={() => <Technique />} />
 					<Route exact path="/papers" 		component={() => <Papers />} />
+
+					<Route exact path="/contact" 		component={() => <Contact />} />
 				</Switch>
 			</Grid>
 

@@ -38,6 +38,10 @@ def returnImage(request):
 
 	return response
 
+def returnTitleTechnique(request):
+	title = list(TitleTechnique.objects.all())[-1].content
+	return HttpResponse(title)
+
 
 # Paper
 def returnJournal(request):
@@ -54,6 +58,9 @@ def returnConference(request):
 		'list_of_text': list_of_text
 	})
 
+def returnTitlePaper(request):
+	title = list(TitlePaper.objects.all())[-1].content
+	return HttpResponse(title)
 
 
 

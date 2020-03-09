@@ -31,3 +31,8 @@ def returnNetwork(request):
 	# 	red.save(response, "JPEG")
 
 	# return response
+
+def returnTitleKAI_Forensics(request):
+	title = list(TitleKAI_Forensics.objects.all())[-1].content
+	return HttpResponse(title)
+

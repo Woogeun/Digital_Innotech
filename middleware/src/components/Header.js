@@ -26,9 +26,14 @@ const useStyles = makeStyles(theme => ({
 	toolbarSecondary: {
 		padding: theme.spacing(3, 3, 0, 0),
 	},
-	buttonGroup: {
-		
-	}
+	subButton: {
+		textTransform: 'none',
+		fontSize: 14
+	},
+	button: {
+		textTransform: 'none',
+		fontSize: 16
+	},
 }));
 
 export default function Header(props) {
@@ -37,6 +42,8 @@ export default function Header(props) {
 	const [checked1, setChecked1] = React.useState(false);
 	const [checked2, setChecked2] = React.useState(false);
 	const [checked3, setChecked3] = React.useState(false);
+	const [checked4, setChecked4] = React.useState(false);
+	const [checked5, setChecked5] = React.useState(false);
 	const [logoURL, setLogoURL] = React.useState(null);
 
 	const handleOn1 = () => {
@@ -63,9 +70,25 @@ export default function Header(props) {
 		setChecked3(false);
 	};
 
-	const checkedList = [checked1, checked2, checked3];
-	const handlerOnList = [handleOn1, handleOn2, handleOn3];
-	const handlerOffList = [handleOff1, handleOff2, handleOff3];
+	const handleOn4 = () => {
+		setChecked4(true);
+	};
+
+	const handleOff4 = () => {
+		setChecked4(false);
+	};
+
+	const handleOn5 = () => {
+		setChecked5(true);
+	};
+
+	const handleOff5 = () => {
+		setChecked5(false);
+	};
+
+	const checkedList = [checked1, checked2, checked3, checked4, checked5];
+	const handlerOnList = [handleOn1, handleOn2, handleOn3, handleOn4, handleOn5];
+	const handlerOffList = [handleOff1, handleOff2, handleOff3, handleOff4, handleOff5];
 
 	useEffect(requestServer('header', 'logo', 'image', setLogoURL), []);
 
@@ -79,32 +102,44 @@ export default function Header(props) {
 						</a>
 						<Grid container justify="flex-end" className={ classes.toolbarSecondary }>
 							{ sections.map((section, i) => {
-								return (
-									<Grid 
-									item 
-									xs={4} 
-									onMouseEnter={handlerOnList[i]} 
-									onMouseLeave={handlerOffList[i]}>
-										<Typography align='center'>
-											{ section.title }
-										</Typography>
-										<Collapse 
-										in={checkedList[i]} 
-										align='center'
-										className={ classes.buttonGroup }>
-											<ButtonGroup
-												variant="text"
-												orientation="vertical"
-												color="primary">
-												{ section.subSections.map(subSection => (
-													<Button href={ subSection.url }>
-														{ subSection.title }
-													</Button>
-												))}
-											</ButtonGroup>
-										</Collapse>
-									</Grid>
-								);
+								if (i != sections.length - 1) {
+									return (
+										<Grid 
+										item 
+										xs 
+										onMouseEnter={handlerOnList[i]} 
+										onMouseLeave={handlerOffList[i]}>
+											<Typography align='center'>
+												{ section.title }
+											</Typography>
+											<Collapse 
+											in={checkedList[i]} 
+											align='center'
+											className={ classes.buttonGroup }>
+												<ButtonGroup
+													variant="text"
+													orientation="vertical"
+													color="primary">
+													{ section.subSections.map(subSection => (
+														<Button href={ subSection.url } className={ classes.subButton }>
+															{ subSection.title }
+														</Button>
+													))}
+												</ButtonGroup>
+											</Collapse>
+										</Grid>
+									);
+								} else {
+									return (
+										<Grid item xs >
+											<Typography align='center' >
+												<Button href={ section.url } className={ classes.button } >
+													{ section.title }
+												</Button>
+											</Typography>
+										</Grid>
+									);
+								}
 							})}
 						</Grid>
 					</Toolbar>

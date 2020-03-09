@@ -8,10 +8,12 @@ urlpatterns = [
     path('technique/how/', views.returnHow),
     path('technique/now/', views.returnNow),
     path('technique/image/', views.returnImage),
+    path('technique/title/', views.returnTitleTechnique),
 
     # Paper
 	path('paper/journal/', views.returnJournal),
-	path('paper/conference/', views.returnConference),    
+	path('paper/conference/', views.returnConference),
+	path('paper/title/', views.returnTitlePaper),
 ]
 
 

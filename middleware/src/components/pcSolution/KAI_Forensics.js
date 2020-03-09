@@ -30,7 +30,15 @@ const useStyles = makeStyles(theme => ({
 	text: {
 		padding: theme.spacing(2),
 		height: '90%'
-	}
+	},
+	title: {
+		height: 100,
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'center',
+		borderBottom: `1px solid ${theme.palette.divider}`,
+
+	},
 }));
 							
 
@@ -41,12 +49,21 @@ export default function KAI_Forensics(props) {
 
 	const [imageDetection, setImageDetection] 	= useState({title: 'Not defined', content: 'Not defined'});
 	const [videoDetection, setVideoDetection] 	= useState({title: 'Not defined', content: 'Not defined'});
+	const [title, setTitle] 					= useState(null);
 
-	useEffect(requestServer('solution/kaiforensics', 'imagedetection', 'json', setImageDetection), []);
-	useEffect(requestServer('solution/kaiforensics', 'videodetection', 'json', setVideoDetection), []);
+	useEffect(requestServer('pcSolution/kaiforensics', 'imagedetection', 'json', setImageDetection), []);
+	useEffect(requestServer('pcSolution/kaiforensics', 'videodetection', 'json', setVideoDetection), []);
+	useEffect(requestServer('pcSolution/kaiforensics', 'title', 'text', setTitle), []);
 
 	return (
 		<Grid container justify='center' spacing={2} >
+			<Grid item xs={12} >
+				<Paper square elevation={.1} className={ classes.title }>
+					<Typography align='center' variant='h6'>
+						{ title }
+					</Typography>
+				</Paper>
+			</Grid>
 			<Grid item xs={12}>
 				<Carousel interval={5000} >
 					{ imgs.map(img => {

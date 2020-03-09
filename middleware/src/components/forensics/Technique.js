@@ -34,7 +34,16 @@ const useStyles = makeStyles(theme => ({
 		fontFamily: 'Raleway',
 		fontSize: 17,
 		color: '#323232'
-	}
+	},
+	_title: {
+		height: 100,
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'center',
+		borderBottom: `1px solid ${theme.palette.divider}`,
+
+	},
+
 }));
 
 export default function Technique(props) {
@@ -43,14 +52,23 @@ export default function Technique(props) {
 	const [how, setHow] 	= useState({title: 'Not loaded', content: 'Not loaded'});
 	const [now, setNow] 	= useState({title: 'Not loaded', content: 'Not loaded'});
 	const [image, setImage] = useState(null);
+	const [title, setTitle] = useState(null);
 
 	useEffect(requestServer('forensics/technique', 'why', 'json', setWhy), []);
 	useEffect(requestServer('forensics/technique', 'how', 'json', setHow), []);
 	useEffect(requestServer('forensics/technique', 'now', 'json', setNow), []);
 	useEffect(requestServer('forensics/technique', 'image', 'image', setImage), []);
+	useEffect(requestServer('forensics/technique', 'title', 'text', setTitle), []);
 	
 	return (
-		<React.Fragment>
+		<Grid container justify='center' className={ classes.root } spacing={2}>
+			<Grid item xs={12} >
+				<Paper square elevation={.1} className={ classes._title }>
+					<Typography align='center' variant='h6'>
+						{ title }
+					</Typography>
+				</Paper>
+			</Grid>
 			<Card>
 				<CardMedia
 				component="img"
@@ -92,7 +110,7 @@ export default function Technique(props) {
 					</Paper>
 				</Grid>
 			</Grid>
-		</React.Fragment>
+		</Grid>
 	);
 }
 

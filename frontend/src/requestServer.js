@@ -12,11 +12,11 @@ export default function requestServer (session, data, type, setFunction) {
 			const image = await res.blob();
 			const url = URL.createObjectURL(image);
 			setFunction(url);	
-		} else if (type === 'image-list') {
-
 		} else if (type === 'json') {
 			const json = await res.json();
 			setFunction(json);
+		} else if (type === 'zip') {
+
 		} 
 	}
 }

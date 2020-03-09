@@ -40,11 +40,13 @@ INSTALLED_APPS = [
     
     'header', # add
     'footer', # add
-    
+    'contact', # add
 
     'about', # add
-    'solution', # add
+    'pcSolution', # add
+    'appSolution', # add
     'forensics', # add
+
 
     'rest_framework', # add
     'corsheaders', # add

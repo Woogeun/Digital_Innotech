@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-export default function TextEditor(props) {
+export default function ImageEditor(props) {
 	const classes = useStyles();
 	const [home, setHome] = useState(null);
 
@@ -40,10 +40,10 @@ export default function TextEditor(props) {
 	);
 }
 
-TextEditor.defaultProps = {
+ImageEditor.defaultProps = {
 
 };
 
-TextEditor.propTypes = {
+ImageEditor.propTypes = {
 
 };

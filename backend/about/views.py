@@ -40,6 +40,9 @@ def returnProfile(request):
 
 	return response
 
+def returnTitleCTO(request):
+	return HttpResponse(list(TitleCTO.objects.all())[-1].content)
+
 
 # History
 def returnHistory(request):
@@ -48,6 +51,9 @@ def returnHistory(request):
 	return JsonResponse({
 		'list_of_json': list_of_json
 	});
+
+def returnTitleHistory(request):
+	return HttpResponse(list(TitleHistory.objects.all())[-1].content)
 
 
 # Introduction
@@ -68,6 +74,9 @@ def returnPdf(request):
 	with open(valid_image, "rb") as f:
 		return HttpResponse(f.read(), content_type="application/pdf")
 
+def returnTitleIntroduction(request):
+	return HttpResponse(list(TitleIntroduction.objects.all())[-1].content)
+
 
 # News
 def returnNews(request):
@@ -77,6 +86,8 @@ def returnNews(request):
 		'list_of_json': list_of_json
 	});
 
+def returnTitleNews(request):
+	return HttpResponse(list(TitleNews.objects.all())[-1].content)
 
 
 

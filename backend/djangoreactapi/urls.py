@@ -22,7 +22,9 @@ urlpatterns = [
     path('header/', include('header.urls')),
 
     path('about/', include('about.urls')),
-    path('solution/', include('solution.urls')),
+    path('pcSolution/', include('pcSolution.urls')),
+    path('appSolution/', include('appSolution.urls')),
     path('forensics/', include('forensics.urls')),
+    path('contact/', include('contact.urls')),
     
 ]
