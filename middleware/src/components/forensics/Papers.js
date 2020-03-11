@@ -10,7 +10,7 @@ import Tabs 			from '@material-ui/core/Tabs';
 import Typography 		from '@material-ui/core/Typography';
 
 import TextListPost 	from 'components/post/TextListPost';
-import requestServer 	from 'requestServer';
+import { requestServer } 	from 'requestServer.js';
 import TextEditor 		from 'components/form/TextEditor';
 import TextAdder 		from 'components/form/TextAdder';
 

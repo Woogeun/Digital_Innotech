@@ -9,7 +9,7 @@ import Grid 			from '@material-ui/core/Grid';
 import Toolbar 			from '@material-ui/core/Toolbar';
 import Typography 		from '@material-ui/core/Typography';
 
-import requestServer 	from 'requestServer';
+import { requestServer } 	from 'requestServer.js';
 
 
 const useStyles = makeStyles(theme => ({

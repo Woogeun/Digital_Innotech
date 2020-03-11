@@ -19,7 +19,7 @@ import Papers 			from 'components/forensics/Papers';
 import Contact 			from 'components/Contact';
 
 
-import requestServer	from 'requestServer';
+import { requestServer } 	from 'requestServer.js';
 
 
 const useStyles = makeStyles(theme => ({

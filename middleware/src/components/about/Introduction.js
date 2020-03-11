@@ -22,7 +22,7 @@ import img9 			from 'assets/KAI_Forensics_9.jpg';
 import img10 			from 'assets/KAI_Forensics_10.jpg';
 import img11 			from 'assets/KAI_Forensics_11.jpg';
 import ImageOrderPost 	from 'components/post/ImageOrderPost';
-import requestServer 	from 'requestServer';
+import { requestServer } 	from 'requestServer.js';
 import TextEditor 		from 'components/form/TextEditor';
 
 

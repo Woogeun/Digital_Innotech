@@ -4,7 +4,7 @@ import PropTypes 						from 'prop-types';
 import { makeStyles } 	from '@material-ui/core/styles';
 
 import TextPost 		from 'components/post/TextPost';
-import requestServer 	from 'requestServer';
+import { requestServer } 	from 'requestServer.js';
 import TextEditor 		from 'components/form/TextEditor';
 
 

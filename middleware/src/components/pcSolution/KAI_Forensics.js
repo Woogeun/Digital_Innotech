@@ -12,7 +12,7 @@ import networkImg2 		from 'assets/network2.png';
 import networkImg3 		from 'assets/network3.png';
 import networkImg4 		from 'assets/network4.png';
 import TextPost 		from 'components/post/TextPost';
-import requestServer 	from 'requestServer';
+import { requestServer } 	from 'requestServer.js';
 import TextEditor 		from 'components/form/TextEditor';
 import TitleContentEditor 	from 'components/form/TitleContentEditor';
 

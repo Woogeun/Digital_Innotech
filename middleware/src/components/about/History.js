@@ -8,7 +8,7 @@ import Paper 					from '@material-ui/core/Paper';
 import Typography 				from '@material-ui/core/Typography';
 	
 import HistoryPost 		from 'components/post/HistoryPost';
-import requestServer 	from 'requestServer';
+import { requestServer } 	from 'requestServer.js';
 import TextEditor 		from 'components/form/TextEditor';
 import HistoryEditor 	from 'components/form/HistoryEditor';
 import HistoryAdder 	from 'components/form/HistoryAdder';

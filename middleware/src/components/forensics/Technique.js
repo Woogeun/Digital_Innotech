@@ -9,7 +9,7 @@ import Paper           	from '@material-ui/core/Paper';
 import Typography       from '@material-ui/core/Typography';
 
 import TextPost 		from 'components/post/TextPost';
-import requestServer 	from 'requestServer';
+import { requestServer } 	from 'requestServer.js';
 import TextEditor 		from 'components/form/TextEditor';
 import TitleContentEditor 	from 'components/form/TitleContentEditor';
 

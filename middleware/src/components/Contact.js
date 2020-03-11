@@ -6,7 +6,7 @@ import Grid 			from '@material-ui/core/Grid';
 import Paper 			from '@material-ui/core/Paper';
 import Typography 		from '@material-ui/core/Typography';
 
-import requestServer	from 'requestServer';
+import { requestServer } 	from 'requestServer.js';
 import TextEditor 		from 'components/form/TextEditor';
 
 

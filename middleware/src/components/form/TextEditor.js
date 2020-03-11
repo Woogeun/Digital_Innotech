@@ -11,7 +11,7 @@ import Button 					from '@material-ui/core/Button';
 import TextField 				from '@material-ui/core/TextField';
 import useMediaQuery 			from '@material-ui/core/useMediaQuery';
 
-import uploadServer			from 'requestServer';
+import { uploadServer } 	from 'requestServer.js';
 
 
 const useStyles = makeStyles(theme => ({
@@ -46,6 +46,8 @@ export default function TextEditor(props) {
 	
 	const updateData = () => {
 		setOpen(true);
+		uploadServer(session, data, type);
+		console.log("******** upload server completed *********");
 	}
 
 	const handleClose = () => {
