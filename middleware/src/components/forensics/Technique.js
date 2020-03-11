@@ -10,6 +10,8 @@ import Typography       from '@material-ui/core/Typography';
 
 import TextPost 		from 'components/post/TextPost';
 import requestServer 	from 'requestServer';
+import TextEditor 		from 'components/form/TextEditor';
+import TitleContentEditor 	from 'components/form/TitleContentEditor';
 
 
 const useStyles = makeStyles(theme => ({
@@ -63,11 +65,7 @@ export default function Technique(props) {
 	return (
 		<Grid container justify='center' className={ classes.root } spacing={2}>
 			<Grid item xs={12} >
-				<Paper square elevation={.1} className={ classes._title }>
-					<Typography align='center' variant='h6'>
-						{ title }
-					</Typography>
-				</Paper>
+				<TextEditor content={title} session='forensics/technique' data='title' type='text' />
 			</Grid>
 			<Card>
 				<CardMedia
@@ -80,34 +78,13 @@ export default function Technique(props) {
 			spacing={2}
 			className={ classes.info }>
 				<Grid item xs={6} >
-					<Paper elevation={1} className={ classes.content }>
-						<Typography className={ classes.title }>
-							{ why.title }
-						</Typography>
-						<Typography className={ classes.detail }>
-							<TextPost content={ why.content } type='body1'/>
-						</Typography>
-					</Paper>
+					<TitleContentEditor titleContent={why} session='forensics/technique' data='why' type='json'/>
 				</Grid>
 				<Grid item xs={6} >
-					<Paper elevation={1} className={ classes.content }>
-						<Typography className={ classes.title }>
-							{ how.title }
-						</Typography>
-						<Typography className={ classes.detail }>
-							<TextPost content={ how.content } type='body1'/>
-						</Typography>
-					</Paper>
+					<TitleContentEditor titleContent={how} session='forensics/technique' data='how' type='json'/>
 				</Grid>
 				<Grid item xs={12} >
-					<Paper elevation={1} className={ classes.content }>
-						<Typography className={ classes.title } >
-							{ now.title } 
-						</Typography>
-						<Typography className={ classes.detail }>
-							<TextPost content={ now.content } type='body1'/>
-						</Typography>
-					</Paper>
+					<TitleContentEditor titleContent={now} session='forensics/technique' data='now' type='json'/>
 				</Grid>
 			</Grid>
 		</Grid>

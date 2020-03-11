@@ -11,6 +11,9 @@ import Typography       from '@material-ui/core/Typography';
 
 import TextPost 		from 'components/post/TextPost';
 import requestServer 	from 'requestServer';
+import TextEditor 		from 'components/form/TextEditor';
+import HistoryEditor 	from 'components/form/HistoryEditor';
+import HistoryAdder 	from 'components/form/HistoryAdder';
 
 
 const useStyles = makeStyles(theme => ({
@@ -63,43 +66,14 @@ export default function News(props) {
 		spacing={2}
 		className={ classes.root }>
 			<Grid item xs={12} >
-				<Paper square elevation={.1} className={ classes.title }>
-					<Typography align='center' variant='h6'>
-						{ title }
-					</Typography>
-				</Paper>
+				<TextEditor content={title} session='about/news' data='title' type='text' />
 			</Grid>
 			{ news.list_of_json.map((obj, i) => {
-				var delay = 500 * (i+1);
 				return (
-					<Grid 
-					container
-					item 
-					xs={4}
-					direction='column'>
-						<Grow 
-						direction='up' 
-						in={true}  
-						style={{ transformOrigin: '0 0 0' }}
-						{...({ timeout: delay })}>
-							<Paper elevation={3} className={ classes.info }>
-								<Grid item xs>
-									<Typography item className={ classes.yearText }>
-										{ obj.date }
-									</Typography>
-								</Grid>
-								<Grid item xs >
-									<Box height='100%' className={ classes.box }>
-										<Typography item className={ classes.descriptionText }>
-											<TextPost content={ obj.content } doubleBreak={true} />
-										</Typography>
-									</Box>
-								</Grid>
-							</Paper>
-						</Grow>
-					</Grid>
+					<HistoryEditor history={ obj } session='about/news' data='news' type='json' />
 				);
 			})}
+			<HistoryAdder session='about/news' data='news' type='json' />
 		</Grid>
 
 	);

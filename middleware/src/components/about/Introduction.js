@@ -23,6 +23,7 @@ import img10 			from 'assets/KAI_Forensics_10.jpg';
 import img11 			from 'assets/KAI_Forensics_11.jpg';
 import ImageOrderPost 	from 'components/post/ImageOrderPost';
 import requestServer 	from 'requestServer';
+import TextEditor 		from 'components/form/TextEditor';
 
 
 const useStyles = makeStyles(theme => ({
@@ -73,11 +74,7 @@ export default function Introduction(props) {
 	return (
 		<Grid container justify='center' className={ classes.root } spacing={2}>
 			<Grid item xs={12} >
-				<Paper square elevation={.1} className={ classes.title }>
-					<Typography align='center' variant='h6'>
-						{ title }
-					</Typography>
-				</Paper>
+				<TextEditor content={title} session='about/introduction' data='title' type='text' />
 			</Grid>
 			<Box position='relative' className={ classes.container } >
 				{ imgs.map((img, i) => {

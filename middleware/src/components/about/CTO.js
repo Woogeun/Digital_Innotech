@@ -8,6 +8,7 @@ import Typography     	from '@material-ui/core/Typography';
 
 import TextPost 		from 'components/post/TextPost';
 import requestServer 	from 'requestServer';
+import TextEditor 		from 'components/form/TextEditor';
 
 
 const useStyles = makeStyles(theme => ({
@@ -69,11 +70,7 @@ export default function CTO(props) {
 	return (
 		<Grid container justify='center' className={ classes.root } spacing={2}>
 			<Grid item xs={12} >
-				<Paper square elevation={.1} className={ classes.title }>
-					<Typography align='center' variant='h6'>
-						{ title }
-					</Typography>
-				</Paper>
+				<TextEditor content={ title } session='about/cto' data='title' type='text'/>
 			</Grid>
 			<Grid 
 			container 
@@ -103,18 +100,19 @@ export default function CTO(props) {
 							<Typography className={ classes.careerText } variant='subtitle2'>
 								교육
 							</Typography>
-							<TextPost content={ education } type='caption'/>
+							<TextEditor content={ education } session={'about/cto'} data={'education'} type={'text'}/>
 							<br/><br/>
 							<Typography className={ classes.careerText } variant='subtitle2'>
 								경력
 							</Typography>
-							<TextPost content={ career } type='caption'/>
+							<TextEditor content={ career } session={'about/cto'} data={'career'} type={'text'}/>
 						</Paper>
 					</Grid>
 				</Grid>
 				<Grid item xs className={ classes.column2 }>
 					<Paper className={ classes.greeting } elevation={2}>
-						<TextPost content={ message } doubleBreak={true} type='body1'/>
+						{/*<TextPost content={ message } doubleBreak={true} type='body1'/>*/}
+						<TextEditor content={ message } session={'about/cto'} data={'message'} type={'text'}/>
 					</Paper> 
 				</Grid>
 			</Grid>

@@ -13,6 +13,8 @@ import networkImg3 		from 'assets/network3.png';
 import networkImg4 		from 'assets/network4.png';
 import TextPost 		from 'components/post/TextPost';
 import requestServer 	from 'requestServer';
+import TextEditor 		from 'components/form/TextEditor';
+import TitleContentEditor 	from 'components/form/TitleContentEditor';
 
 
 const useStyles = makeStyles(theme => ({
@@ -58,11 +60,7 @@ export default function KAI_Forensics(props) {
 	return (
 		<Grid container justify='center' spacing={2} >
 			<Grid item xs={12} >
-				<Paper square elevation={.1} className={ classes.title }>
-					<Typography align='center' variant='h6'>
-						{ title }
-					</Typography>
-				</Paper>
+				<TextEditor content={title} session='pcSolution/kaiforensics' data='title' type='text' />
 			</Grid>
 			<Grid item xs={12}>
 				<Carousel interval={5000} >
@@ -75,23 +73,11 @@ export default function KAI_Forensics(props) {
 					})}
 				</Carousel>
 			</Grid>
-			<Grid item xs >
-				<Paper square className={ classes.text }>
-					<Typography variant='body1'>
-						{ imageDetection.title }
-					</Typography>
-					<br/>
-					<TextPost content={ imageDetection.content } type='body2'/>
-				</Paper>
+			<Grid item xs={6} >
+				<TitleContentEditor titleContent={imageDetection} session='pcSolution/kaiforensics' data='imagedetection' type='json' />
 			</Grid>
-			<Grid item xs >
-				<Paper square className={ classes.text }>
-					<Typography variant='body1'>
-						{ videoDetection.title }
-					</Typography>
-					<br/>
-					<TextPost content={ videoDetection.content } type='body2'/>
-				</Paper>
+			<Grid item xs={6} >
+				<TitleContentEditor titleContent={videoDetection} session='pcSolution/kaiforensics' data='videodetection' type='json' />
 			</Grid>
 		</Grid>
 	);

@@ -9,6 +9,9 @@ import Typography 				from '@material-ui/core/Typography';
 	
 import HistoryPost 		from 'components/post/HistoryPost';
 import requestServer 	from 'requestServer';
+import TextEditor 		from 'components/form/TextEditor';
+import HistoryEditor 	from 'components/form/HistoryEditor';
+import HistoryAdder 	from 'components/form/HistoryAdder';
 
 
 const useStyles = makeStyles(theme => ({
@@ -38,19 +41,15 @@ export default function History(props) {
 	return (
 		<Grid container justify='center' className={ classes.root } spacing={2}>
 			<Grid item xs={12} >
-				<Paper square elevation={.1} className={ classes.title }>
-					<Typography align='center' variant='h6'>
-						{ title }
-					</Typography>
-				</Paper>
+				<TextEditor content={title} session='about/history' data='title' type='text' />
 			</Grid>
-			<List className={ classes.list }>
-				{ histories.list_of_json.map((history, i) => {
-					return (
-						<HistoryPost history={ history } order={i}/>
-					);
-				})}
-			</List>
+			{ histories.list_of_json.map((history, i) => {
+				return (
+					
+					<HistoryEditor history={history} session='about/history' data='history' type='json' />
+				);
+			})}
+			<HistoryAdder session='about/history' data='history' type='json' />
 		</Grid>
 	);
 }

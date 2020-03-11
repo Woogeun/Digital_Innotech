@@ -7,6 +7,7 @@ import Paper 			from '@material-ui/core/Paper';
 import Typography 		from '@material-ui/core/Typography';
 
 import requestServer	from 'requestServer';
+import TextEditor 		from 'components/form/TextEditor';
 
 
 const useStyles = makeStyles(theme => ({
@@ -29,11 +30,7 @@ export default function Temp(props) {
 	return (
 		<Grid container justify='center' className={ classes.root } spacing={2}>
 			<Grid item xs={12} >
-				<Paper square elevation={.1} className={ classes.title }>
-					<Typography align='center' variant='h6'>
-						{ title }
-					</Typography>
-				</Paper>
+				<TextEditor content={title} session='appSolution/temp' data='title' type='text' />
 			</Grid>
 			<Grid>
 				Nothing on it.

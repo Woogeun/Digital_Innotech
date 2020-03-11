@@ -2,16 +2,19 @@ import React, { useState, useEffect }  	from 'react';
 import PropTypes            			from 'prop-types';
 
 import { makeStyles, useTheme }	from '@material-ui/core/styles';
+import Button 					from '@material-ui/core/Button';
+import DeleteIcon 				from '@material-ui/icons/Delete';
 import Dialog 					from '@material-ui/core/Dialog';
 import DialogActions 			from '@material-ui/core/DialogActions';
 import DialogContent 			from '@material-ui/core/DialogContent';
 import DialogContentText 		from '@material-ui/core/DialogContentText';
 import DialogTitle 				from '@material-ui/core/DialogTitle';
-import Button 					from '@material-ui/core/Button';
+import Grid 					from '@material-ui/core/Grid';
+import IconButton 				from '@material-ui/core/IconButton';
 import TextField 				from '@material-ui/core/TextField';
 import useMediaQuery 			from '@material-ui/core/useMediaQuery';
 
-import uploadServer			from 'requestServer';
+import requestServer			from 'requestServer';
 
 
 const useStyles = makeStyles(theme => ({
@@ -30,57 +33,79 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-export default function TextEditor(props) {
+export default function HistoryEditor(props) {
 	const classes = useStyles();
 	const theme = useTheme();
-	const { content, session, data, type } = props;
+	const { session, data, type } = props;
 	const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
+	const [openUpload, setUpload] = useState(false);
 	const [open, setOpen] = useState(false);
-	const [value, setValue] = useState(content);
-	useEffect(() => {setValue(content)}, [content]);
+	const [year, setYear] = useState('');
+	const [content, setContent] = useState('');
 
-	const handleChange = event => {
-		setValue(event.target.value);
+	const handleChangeYear = event => {
+		setYear(event.target.value);
+	}
+
+	const handleChangeContent = event => {
+		setContent(event.target.value);
 	}
 	
-	const updateData = () => {
-		setOpen(true);
+	const uploadData = () => {
+		setUpload(true);
 	}
 
 	const handleClose = () => {
-		setOpen(false);
+		setUpload(false);
 		window.location.reload();
 	}
 
 
 	return (
 		<React.Fragment>
-			<TextField 
-			className={ classes.editor }
-			multiline
-			value={ value }
-			onChange={ handleChange }
-			/>
+			<Grid container>
+				<Grid item xs={2}>
+					<TextField 
+					className={ classes.editor }
+					multiline
+					label='year'
+					value={ year }
+					placeholder='Year'
+					onChange={ handleChangeYear }
+					/>
+				</Grid>
+				<Grid item xs={11}>
+					<TextField 
+					className={ classes.editor }
+					multiline
+					label='contents'
+					value={ content }
+					placeholder='Contents'
+					onChange={ handleChangeContent }
+					/>
+				</Grid>
+			</Grid>
 			<Button 
 			className={ classes.button }
 			variant='contained' 
 			color='primary'
 			size='small'
-			onClick={updateData}>
-				Edit
+			onClick={uploadData}>
+				Add
 			</Button>
+			
 			<Dialog
 			className={ classes.dialog }
 			fullScreen={fullScreen}
-			open={open}
+			open={openUpload}
 			onClose={handleClose}>
 				<DialogTitle>
-					Updated successfully!
+					Uploaded successfully!
 				</DialogTitle>
 				<DialogContent>
 					<DialogContentText>
-						"{data}" updated successfully!
+						"{data}" uploaded successfully!
 					</DialogContentText>
 				</DialogContent>
 				<DialogActions>
@@ -93,13 +118,11 @@ export default function TextEditor(props) {
 	);
 }
 
-TextEditor.defaultProps = {
-	content: 'Default value',
+HistoryEditor.defaultProps = {
 
 };
 
-TextEditor.propTypes = {
-	content: PropTypes.string,
+HistoryEditor.propTypes = {
 	session: PropTypes.string,
 	data: PropTypes.string,
 	type: PropTypes.string,

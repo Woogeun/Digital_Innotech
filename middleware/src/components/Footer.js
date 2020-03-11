@@ -5,6 +5,7 @@ import { makeStyles } 	from '@material-ui/core/styles';
 
 import TextPost 		from 'components/post/TextPost';
 import requestServer 	from 'requestServer';
+import TextEditor 		from 'components/form/TextEditor';
 
 
 const useStyles = makeStyles(theme => ({
@@ -22,7 +23,7 @@ export default function Footer(props) {
 
 	return (
 		<footer className={ classes.footer } align='center'>
-			<TextPost content={ footer } type='body2'/>
+			<TextEditor content={ footer } session='footer' data='contact' type='text'/>
 		</footer>
 	);
 }

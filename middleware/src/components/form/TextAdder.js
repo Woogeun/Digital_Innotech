@@ -11,7 +11,7 @@ import Button 					from '@material-ui/core/Button';
 import TextField 				from '@material-ui/core/TextField';
 import useMediaQuery 			from '@material-ui/core/useMediaQuery';
 
-import uploadServer			from 'requestServer';
+import requestServer			from 'requestServer';
 
 
 const useStyles = makeStyles(theme => ({
@@ -33,18 +33,17 @@ const useStyles = makeStyles(theme => ({
 export default function TextEditor(props) {
 	const classes = useStyles();
 	const theme = useTheme();
-	const { content, session, data, type } = props;
+	const { session, data, type } = props;
 	const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
 	const [open, setOpen] = useState(false);
-	const [value, setValue] = useState(content);
-	useEffect(() => {setValue(content)}, [content]);
+	const [value, setValue] = useState('');
 
 	const handleChange = event => {
 		setValue(event.target.value);
 	}
 	
-	const updateData = () => {
+	const uploadData = () => {
 		setOpen(true);
 	}
 
@@ -60,6 +59,7 @@ export default function TextEditor(props) {
 			className={ classes.editor }
 			multiline
 			value={ value }
+			placeholder='content'
 			onChange={ handleChange }
 			/>
 			<Button 
@@ -67,8 +67,8 @@ export default function TextEditor(props) {
 			variant='contained' 
 			color='primary'
 			size='small'
-			onClick={updateData}>
-				Edit
+			onClick={uploadData}>
+				Add
 			</Button>
 			<Dialog
 			className={ classes.dialog }
@@ -76,11 +76,11 @@ export default function TextEditor(props) {
 			open={open}
 			onClose={handleClose}>
 				<DialogTitle>
-					Updated successfully!
+					Uploaded successfully!
 				</DialogTitle>
 				<DialogContent>
 					<DialogContentText>
-						"{data}" updated successfully!
+						"{data}" uploaded successfully!
 					</DialogContentText>
 				</DialogContent>
 				<DialogActions>
@@ -94,12 +94,10 @@ export default function TextEditor(props) {
 }
 
 TextEditor.defaultProps = {
-	content: 'Default value',
 
 };
 
 TextEditor.propTypes = {
-	content: PropTypes.string,
 	session: PropTypes.string,
 	data: PropTypes.string,
 	type: PropTypes.string,

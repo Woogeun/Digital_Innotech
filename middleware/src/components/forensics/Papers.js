@@ -11,6 +11,8 @@ import Typography 		from '@material-ui/core/Typography';
 
 import TextListPost 	from 'components/post/TextListPost';
 import requestServer 	from 'requestServer';
+import TextEditor 		from 'components/form/TextEditor';
+import TextAdder 		from 'components/form/TextAdder';
 
 
 function a11yProps(index) {
@@ -73,11 +75,7 @@ export default function Papers(props) {
 	return (
 		<Grid container justify='center' className={ classes.root } spacing={2}>
 			<Grid item xs={12} >
-				<Paper square elevation={.1} className={ classes.title }>
-					<Typography align='center' variant='h6'>
-						{ title }
-					</Typography>
-				</Paper>
+				<TextEditor content={title} session='forensics/paper' data='title' type='text' />
 			</Grid>
 			<Paper square elevation={0} className={ classes.root }>
 				<Tabs
@@ -92,13 +90,23 @@ export default function Papers(props) {
 					<Typography variant='h6'>
 						국제 저널
 					</Typography>
-					<TextListPost content={ journals.list_of_text } type='body1'/>
+					{ journals.list_of_text.map((content, i) => {
+						return (
+							<TextEditor content={content} session='forensics/paper' data='journal' type='json' />
+						);
+					})}
+					<TextAdder session='forensics/paper' data='journal' type='json' />
 				</TabPanel>
 				<TabPanel value={value} index={1}>
 					<Typography variant='h6'>
 						국제 학술 대회
 					</Typography>
-					<TextListPost content={ conferences.list_of_text } type='body1'/>
+					{ conferences.list_of_text.map((content, i) => {
+						return (
+							<TextEditor content={content} session='forensics/paper' data='conference' type='json' />
+						);
+					})}
+					<TextAdder session='forensics/paper' data='conference' type='json' />
 				</TabPanel>
 			</Paper>
 		</Grid>

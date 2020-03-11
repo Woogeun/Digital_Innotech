@@ -1,11 +1,15 @@
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from rest_framework import generics
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import ensure_csrf_cookie
 
 from .models import *
 
 # Home
+@ensure_csrf_cookie
 def returnHome(request):
+	print(request.method)
 	valid_image = list(Home.objects.all())[-1].image.path
 	try:
 		with open(valid_image, "rb") as f:
@@ -81,7 +85,7 @@ def returnTitleIntroduction(request):
 # News
 def returnNews(request):
 	objs = list(News.objects.all())
-	list_of_json = [{'date': obj.date, 'content': obj.content} for obj in objs]
+	list_of_json = [{'year': obj.date, 'content': obj.content} for obj in objs]
 	return JsonResponse({
 		'list_of_json': list_of_json
 	});
