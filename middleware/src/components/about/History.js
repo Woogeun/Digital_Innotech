@@ -15,6 +15,9 @@ import HistoryAdder 	from 'components/form/HistoryAdder';
 
 
 const useStyles = makeStyles(theme => ({
+	root: {
+		width: '100%'
+	},
 	list: {
 		minHeight: 100,
 		maxWidth: 800,

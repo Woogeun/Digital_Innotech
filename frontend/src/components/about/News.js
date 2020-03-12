@@ -85,7 +85,7 @@ export default function News(props) {
 							<Paper elevation={3} className={ classes.info }>
 								<Grid item xs>
 									<Typography item className={ classes.yearText }>
-										{ obj.date }
+										{ obj.year }
 									</Typography>
 								</Grid>
 								<Grid item xs >

@@ -1,23 +1,6 @@
 import axios from 'axios'
 
 
-function getCookie(cname) {
-	var name = cname + "=";
-	var decodedCookie = decodeURIComponent(document.cookie);
-	var ca = decodedCookie.split(';');
-	for(var i = 0; i <ca.length; i++) {
-		var c = ca[i];
-		while (c.charAt(0) == ' ') {
-			c = c.substring(1);
-		}
-		if (c.indexOf(name) == 0) {
-			return c.substring(name.length, c.length);
-    	}
-	}
-	return "";
-}
-
-
 function requestServer (session, data, type, setFunction) {
 	return async () => {
 		const server = 'http://127.0.0.1:8000/'+ session + '/' + data + '/';
@@ -66,13 +49,15 @@ function requestServer (session, data, type, setFunction) {
 	}
 }
 
-function updateServer (session, data, type) {
+function updateServer (session, data, type, content) {
 	const server = 'http://127.0.0.1:8000/'+ session + '/' + data + '/';
-	
+
 	if (type === 'text') {
 		axios
 			.post(server, {
-				data: 'Hello world'
+				type: type,
+				mode: 'update',
+				content: content
 			})
 			.then(function(res) {
 				const text = res.data;
@@ -82,6 +67,11 @@ function updateServer (session, data, type) {
 			});
 	} else if (type === 'image') {
 		axios
+			.post(server, {
+				type: type,
+				mode: 'update',
+				content: content
+			})
 			.post(server, {
 				responseType: 'blob'
 			})
@@ -95,7 +85,11 @@ function updateServer (session, data, type) {
 		
 	} else if (type === 'json') {
 		axios
-			.post(server)
+			.post(server, {
+				type: type,
+				mode: 'update',
+				content: content
+			})
 			.then(function(res) {
 				const json = res.data;
 			})
@@ -108,13 +102,15 @@ function updateServer (session, data, type) {
 	} 
 }
 
-function uploadServer (session, data, type) {
+function uploadServer (session, data, type, content) {
 	const server = 'http://127.0.0.1:8000/'+ session + '/' + data + '/';
 	
 	if (type === 'text') {
 		axios
 			.post(server, {
-				message: 'Hello world'
+				type: type,
+				mode: 'upload',
+				content: content
 			})
 			.then(function(res) {
 				console.log("POST upload success in text" + server);
@@ -125,7 +121,9 @@ function uploadServer (session, data, type) {
 	} else if (type === 'image') {
 		axios
 			.post(server, {
-				responseType: 'blob'
+				type: type,
+				mode: 'upload',
+				content: content
 			})
 			.then(function(res) {
 				console.log("POST upload success in image " + server);
@@ -136,7 +134,11 @@ function uploadServer (session, data, type) {
 		
 	} else if (type === 'json') {
 		axios
-			.post(server)
+			.post(server, {
+				type: type,
+				mode: 'upload',
+				content: content
+			})
 			.then(function(res) {
 				console.log("POST upload success in json " + server);
 			})
@@ -149,12 +151,16 @@ function uploadServer (session, data, type) {
 	} 
 }
 
-function deleteServer (session, data, type) {
+function deleteServer (session, data, type, content) {
 	const server = 'http://127.0.0.1:8000/'+ session + '/' + data + '/';
 	
 	if (type === 'text') {
 		axios
-			.post(server)
+			.post(server, {
+				type: type,
+				mode: 'delete',
+				content: content
+			})
 			.then(function(res) {
 				console.log("POST delete success in text " + server);
 			})
@@ -164,7 +170,9 @@ function deleteServer (session, data, type) {
 	} else if (type === 'image') {
 		axios
 			.post(server, {
-				responseType: 'blob'
+				type: type,
+				mode: 'delete',
+				content: content
 			})
 			.then(function(res) {
 				console.log("POST delete success in image " + server);
@@ -175,7 +183,11 @@ function deleteServer (session, data, type) {
 		
 	} else if (type === 'json') {
 		axios
-			.post(server)
+			.post(server, {
+				type: type,
+				mode: 'delete',
+				content: content
+			})
 			.then(function(res) {
 				console.log("POST delete success in json " + server);
 			})

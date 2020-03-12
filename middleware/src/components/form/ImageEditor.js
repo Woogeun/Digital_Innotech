@@ -1,49 +1,117 @@
 import React, { useState, useEffect }  	from 'react';
 import PropTypes            			from 'prop-types';
 
-import { makeStyles }	from '@material-ui/core/styles';
-import Card 			from '@material-ui/core/Card';
+import { makeStyles, useTheme }	from '@material-ui/core/styles';
+import Box 						from '@material-ui/core/Box';
+import Button 					from '@material-ui/core/Button';
+import Dialog 					from '@material-ui/core/Dialog';
+import DialogActions 			from '@material-ui/core/DialogActions';
+import DialogContent 			from '@material-ui/core/DialogContent';
+import DialogContentText 		from '@material-ui/core/DialogContentText';
+import DialogTitle 				from '@material-ui/core/DialogTitle';
+import TextField 				from '@material-ui/core/TextField';
+import useMediaQuery 			from '@material-ui/core/useMediaQuery';
 
-import { requestServer } 	from 'requestServer.js';
+import { uploadServer } 	from 'requestServer.js';
 
 
 const useStyles = makeStyles(theme => ({
-	card: {
-		backgroundColor: '#FAFAFA',
-		margin: theme.spacing(2, 0),
-		display: 'flex',
-		minHeight: 300,
+	root: {
+		// width: '100%',
+		border: 'solid',
+		borderColor: 'gray',
+		borderWidth: '1px',
+		borderRadius: '3px',
+		margin: theme.spacing(1),
+		marginBottom: theme.spacing(8),
+		padding: theme.spacing(1)
+	},	
+	editor: {
 		width: '100%',
+		marginBottom: theme.spacing(1),
 	},
-	media: {
+	button: {
+		float: 'right'
+	},
+	dialog: {
 		
-	},
+	}
 }));
 
-export default function ImageEditor(props) {
+export default function TextEditor(props) {
 	const classes = useStyles();
-	const [home, setHome] = useState(null);
+	const theme = useTheme();
+	const { content, session, data, type } = props;
+	const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
-	useEffect(requestServer('about', 'home', 'image', setHome), []);
+	const [open, setOpen] = useState(false);
+	const [value, setValue] = useState(content);
+	useEffect(() => {setValue(content)}, [content]);
+
+	const handleChange = event => {
+		setValue(event.target.value);
+	}
+	
+	const uploadData = () => {
+		setOpen(true);
+		uploadServer(session, data, type, value);
+		console.log("******** upload server completed *********");
+	}
+
+	const handleClose = () => {
+		setOpen(false);
+		window.location.reload();
+	}
+
 
 	return (
-		<React.Fragment>
-			<Card 
-			elevation={0}
-			className={classes.card}>
-				<CardMedia
-					component="img"
-					className={classes.media}
-					image={home}/>
-			</Card>
-		</React.Fragment>
+		<Box className={ classes.root }>
+			<TextField 
+			className={ classes.editor }
+			multiline
+			value={ value }
+			onChange={ handleChange }
+			/>
+			<Button 
+			className={ classes.button }
+			variant='contained' 
+			color='primary'
+			size='small'
+			onClick={uploadData}>
+				Upload
+			</Button>
+			<Dialog
+			className={ classes.dialog }
+			fullScreen={fullScreen}
+			open={open}
+			onClose={handleClose}>
+				<DialogTitle>
+					Uploaded successfully!
+				</DialogTitle>
+				<DialogContent>
+					<DialogContentText>
+						"{data}" uploaded successfully!
+					</DialogContentText>
+				</DialogContent>
+				<DialogActions>
+					<Button onClick={handleClose} color='primary'>
+						Exit
+					</Button>
+				</DialogActions>
+			</Dialog>
+		</Box>
 	);
 }
 
-ImageEditor.defaultProps = {
+TextEditor.defaultProps = {
+	content: 'Default value',
 
 };
 
-ImageEditor.propTypes = {
+TextEditor.propTypes = {
+	content: PropTypes.string,
+	session: PropTypes.string,
+	data: PropTypes.string,
+	type: PropTypes.string,
 
 };

@@ -1,20 +1,48 @@
+import axios from 'axios'
 
 
 export default function requestServer (session, data, type, setFunction) {
 	return async () => {
-		const server = 'http://127.0.0.1:8000/';
-		const res = await fetch(server + session + '/' + data);
-
+		const server = 'http://127.0.0.1:8000/'+ session + '/' + data + '/';
+		
 		if (type === 'text') {
-			const text = await res.text();
-			setFunction(text);
+			axios
+				.get(server)
+				.then(function(res) {
+					const text = res.data;
+					setFunction(text);
+				})
+				.catch(function(error) {
+					console.log("GET error in text " + server);
+					setFunction("ERROR");
+				});
 		} else if (type === 'image') {
-			const image = await res.blob();
-			const url = URL.createObjectURL(image);
-			setFunction(url);	
+			axios
+				.get(server, {
+					responseType: 'blob'
+				})
+				.then(function(res) {
+					const image = res.data;
+					const url = URL.createObjectURL(image);
+					setFunction(url);	
+				})
+				.catch(function(error) {
+					console.log("GET error in image " + server);
+					setFunction(null);
+				});
+			
 		} else if (type === 'json') {
-			const json = await res.json();
-			setFunction(json);
+			axios
+				.get(server)
+				.then(function(res) {
+					const json = res.data;
+					setFunction(json);
+				})
+				.catch(function(error) {
+					console.log("GET error in json " + server);
+					setFunction({});
+				});
+			
 		} else if (type === 'zip') {
 
 		} 

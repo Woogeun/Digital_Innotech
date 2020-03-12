@@ -2,12 +2,13 @@ import React, { useState, useEffect }  	from 'react';
 import PropTypes            			from 'prop-types';
 
 import { makeStyles, useTheme }	from '@material-ui/core/styles';
+import Box 						from '@material-ui/core/Box';
+import Button 					from '@material-ui/core/Button';
 import Dialog 					from '@material-ui/core/Dialog';
 import DialogActions 			from '@material-ui/core/DialogActions';
 import DialogContent 			from '@material-ui/core/DialogContent';
 import DialogContentText 		from '@material-ui/core/DialogContentText';
 import DialogTitle 				from '@material-ui/core/DialogTitle';
-import Button 					from '@material-ui/core/Button';
 import TextField 				from '@material-ui/core/TextField';
 import useMediaQuery 			from '@material-ui/core/useMediaQuery';
 
@@ -17,6 +18,13 @@ import { uploadServer } 	from 'requestServer.js';
 const useStyles = makeStyles(theme => ({
 	root: {
 		// width: '100%',
+		border: 'solid',
+		borderColor: 'gray',
+		borderWidth: '1px',
+		borderRadius: '3px',
+		margin: theme.spacing(1),
+		marginBottom: theme.spacing(8),
+		padding: theme.spacing(1)
 	},	
 	editor: {
 		width: '100%',
@@ -46,7 +54,7 @@ export default function TextEditor(props) {
 	
 	const updateData = () => {
 		setOpen(true);
-		uploadServer(session, data, type);
+		uploadServer(session, data, type, value);
 		console.log("******** upload server completed *********");
 	}
 
@@ -57,7 +65,7 @@ export default function TextEditor(props) {
 
 
 	return (
-		<React.Fragment>
+		<Box className={ classes.root }>
 			<TextField 
 			className={ classes.editor }
 			multiline
@@ -91,7 +99,7 @@ export default function TextEditor(props) {
 					</Button>
 				</DialogActions>
 			</Dialog>
-		</React.Fragment>
+		</Box>
 	);
 }
 

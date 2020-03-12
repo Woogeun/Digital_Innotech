@@ -2,6 +2,7 @@ import React, { useState, useEffect }  	from 'react';
 import PropTypes            			from 'prop-types';
 
 import { makeStyles, useTheme }	from '@material-ui/core/styles';
+import Box 						from '@material-ui/core/Box';
 import Button 					from '@material-ui/core/Button';
 import DeleteIcon 				from '@material-ui/icons/Delete';
 import Dialog 					from '@material-ui/core/Dialog';
@@ -14,12 +15,19 @@ import IconButton 				from '@material-ui/core/IconButton';
 import TextField 				from '@material-ui/core/TextField';
 import useMediaQuery 			from '@material-ui/core/useMediaQuery';
 
-import { requestServer } 	from 'requestServer.js';
+import { uploadServer } 	from 'requestServer.js';
 
 
 const useStyles = makeStyles(theme => ({
 	root: {
 		// width: '100%',
+		border: 'solid',
+		borderColor: 'gray',
+		borderWidth: '1px',
+		borderRadius: '3px',
+		margin: theme.spacing(1),
+		marginBottom: theme.spacing(8),
+		padding: theme.spacing(1)
 	},	
 	editor: {
 		width: '100%',
@@ -53,6 +61,7 @@ export default function HistoryEditor(props) {
 	}
 	
 	const uploadData = () => {
+		uploadServer(session, data, type, {year: year, content: content})
 		setUpload(true);
 	}
 
@@ -63,9 +72,9 @@ export default function HistoryEditor(props) {
 
 
 	return (
-		<React.Fragment>
+		<Box className={ classes.root }>
 			<Grid container>
-				<Grid item xs={2}>
+				<Grid item xs={4}>
 					<TextField 
 					className={ classes.editor }
 					multiline
@@ -75,7 +84,7 @@ export default function HistoryEditor(props) {
 					onChange={ handleChangeYear }
 					/>
 				</Grid>
-				<Grid item xs={11}>
+				<Grid item xs={12}>
 					<TextField 
 					className={ classes.editor }
 					multiline
@@ -114,7 +123,7 @@ export default function HistoryEditor(props) {
 					</Button>
 				</DialogActions>
 			</Dialog>
-		</React.Fragment>
+		</Box>
 	);
 }
 

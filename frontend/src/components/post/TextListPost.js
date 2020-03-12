@@ -32,7 +32,7 @@ export default function TextListPost(props) {
 				return (
 					<Grow {...growStyles(i)}>
 						<Typography className={ classes.font } variant={ type }>
-							<p>{ line }</p>
+							<p>{ line.content }</p>
 							{ doubleBreak ? <br/> : null }
 						</Typography>
 					</Grow>

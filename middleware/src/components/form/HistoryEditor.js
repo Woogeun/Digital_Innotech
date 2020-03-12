@@ -2,6 +2,7 @@ import React, { useState, useEffect }  	from 'react';
 import PropTypes            			from 'prop-types';
 
 import { makeStyles, useTheme }	from '@material-ui/core/styles';
+import Box 						from '@material-ui/core/Box';
 import Button 					from '@material-ui/core/Button';
 import DeleteIcon 				from '@material-ui/icons/Delete';
 import Dialog 					from '@material-ui/core/Dialog';
@@ -14,12 +15,19 @@ import IconButton 				from '@material-ui/core/IconButton';
 import TextField 				from '@material-ui/core/TextField';
 import useMediaQuery 			from '@material-ui/core/useMediaQuery';
 
-import { requestServer } 	from 'requestServer.js';
+import { updateServer, deleteServer } 	from 'requestServer.js';
 
 
 const useStyles = makeStyles(theme => ({
 	root: {
 		// width: '100%',
+		border: 'solid',
+		borderColor: 'gray',
+		borderWidth: '1px',
+		borderRadius: '3px',
+		margin: theme.spacing(1),
+		marginBottom: theme.spacing(8),
+		padding: theme.spacing(1)
 	},	
 	editor: {
 		width: '100%',
@@ -55,11 +63,13 @@ export default function HistoryEditor(props) {
 		setContent(event.target.value);
 	}
 	
-	const uploadData = () => {
+	const updateData = () => {
+		updateServer(session, data, type, {id: history.id, year: year, content: content})
 		setUpdate(true);
 	}
 
 	const deleteData = () => {
+		deleteServer(session, data, type, history.id)
 		setDelete(true);
 	}
 
@@ -71,9 +81,9 @@ export default function HistoryEditor(props) {
 
 
 	return (
-		<React.Fragment>
+		<Box className={ classes.root }>
 			<Grid container>
-				<Grid item xs={2}>
+				<Grid item xs={4}>
 					<TextField 
 					className={ classes.editor }
 					multiline
@@ -104,7 +114,7 @@ export default function HistoryEditor(props) {
 			variant='contained' 
 			color='primary'
 			size='small'
-			onClick={uploadData}>
+			onClick={updateData}>
 				Edit
 			</Button>
 			
@@ -147,7 +157,7 @@ export default function HistoryEditor(props) {
 					</Button>
 				</DialogActions>
 			</Dialog>
-		</React.Fragment>
+		</Box>
 	);
 }
 
@@ -157,6 +167,7 @@ HistoryEditor.defaultProps = {
 
 HistoryEditor.propTypes = {
 	history: PropTypes.shape({
+		id: PropTypes.number,
 		year: PropTypes.number,
 		content: PropTypes.string
 	}),

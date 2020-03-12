@@ -7,7 +7,7 @@ urlpatterns = [
     path('kaiforensics/imagedetection/', views.returnImageDetection),
     path('kaiforensics/videodetection/', views.returnVideoDetection),
     path('kaiforensics/network/', views.returnNetwork),
-    path('kaiforensics/title', views.returnTitleKAI_Forensics),
+    path('kaiforensics/title/', views.returnTitleKAI_Forensics),
 ]
 
 

@@ -13,6 +13,7 @@ import TextListPost 	from 'components/post/TextListPost';
 import { requestServer } 	from 'requestServer.js';
 import TextEditor 		from 'components/form/TextEditor';
 import TextAdder 		from 'components/form/TextAdder';
+import PaperEditor 		from 'components/form/PaperEditor';
 
 
 function a11yProps(index) {
@@ -41,7 +42,7 @@ function TabPanel(props) {
 
 const useStyles = makeStyles(theme => ({
 	root: {
-
+		width: '100%'
 	},
 	container: {
 		
@@ -92,7 +93,7 @@ export default function Papers(props) {
 					</Typography>
 					{ journals.list_of_text.map((content, i) => {
 						return (
-							<TextEditor content={content} session='forensics/paper' data='journal' type='json' />
+							<PaperEditor content={content} session='forensics/paper' data='journal' type='json' />
 						);
 					})}
 					<TextAdder session='forensics/paper' data='journal' type='json' />
@@ -103,7 +104,7 @@ export default function Papers(props) {
 					</Typography>
 					{ conferences.list_of_text.map((content, i) => {
 						return (
-							<TextEditor content={content} session='forensics/paper' data='conference' type='json' />
+							<PaperEditor content={content} session='forensics/paper' data='conference' type='json' />
 						);
 					})}
 					<TextAdder session='forensics/paper' data='conference' type='json' />
