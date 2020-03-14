@@ -55,7 +55,6 @@ export default function TextEditor(props) {
 	const updateData = () => {
 		setOpen(true);
 		uploadServer(session, data, type, value);
-		console.log("******** upload server completed *********");
 	}
 
 	const handleClose = () => {

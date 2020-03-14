@@ -14,15 +14,6 @@ def returnLogo(request):
 		instance.save()
 		return HttpResponse('Success')
 	else:
-		valid_image = list(Logo.objects.all())[-1].image.path
-
-		try:
-			with open(valid_image, "rb") as f:
-				return HttpResponse(f.read(), content_type="image/jpeg")
-
-		except IOError:
-			red = Image.new('RGBA', (1, 1), (255,0,0,0))
-			response = HttpResponse(content_type="image/jpeg")
-			red.save(response, "JPEG")
-
-		return response
+		image_path = list(Logo.objects.all())[-1].image.path
+		with open(image_path, "rb") as image:
+			return HttpResponse(image.read(), content_type="image")

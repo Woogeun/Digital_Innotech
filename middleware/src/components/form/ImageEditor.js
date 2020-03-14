@@ -4,6 +4,8 @@ import PropTypes            			from 'prop-types';
 import { makeStyles, useTheme }	from '@material-ui/core/styles';
 import Box 						from '@material-ui/core/Box';
 import Button 					from '@material-ui/core/Button';
+import Card 					from '@material-ui/core/Card';
+import CardMedia 				from '@material-ui/core/CardMedia';
 import Dialog 					from '@material-ui/core/Dialog';
 import DialogActions 			from '@material-ui/core/DialogActions';
 import DialogContent 			from '@material-ui/core/DialogContent';
@@ -27,8 +29,12 @@ const useStyles = makeStyles(theme => ({
 		padding: theme.spacing(1)
 	},	
 	editor: {
+		backgroundColor: '#FAFAFA',
+		margin: theme.spacing(2, 0),
+		display: 'flex',
+		minHeight: 300,
 		width: '100%',
-		marginBottom: theme.spacing(1),
+		float: 'right'
 	},
 	button: {
 		float: 'right'
@@ -41,21 +47,35 @@ const useStyles = makeStyles(theme => ({
 export default function TextEditor(props) {
 	const classes = useStyles();
 	const theme = useTheme();
-	const { content, session, data, type } = props;
+	const { url, session, data, type } = props;
 	const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
+	const [result, setResult] = useState('None');	
 	const [open, setOpen] = useState(false);
-	const [value, setValue] = useState(content);
-	useEffect(() => {setValue(content)}, [content]);
+	const [file, setFile] = useState(null);
+	const [src, setSrc] = useState(url);
+	useEffect(() => {setSrc(url)}, [url]);
 
 	const handleChange = event => {
-		setValue(event.target.value);
+		setFile(event.target.files[0]);
+		setSrc(URL.createObjectURL(event.target.files[0]));
 	}
 	
 	const uploadData = () => {
-		setOpen(true);
-		uploadServer(session, data, type, value);
-		console.log("******** upload server completed *********");
+		if (file === null) {
+			setResult('No data selected!');
+			setOpen(true);
+		} else {
+			uploadServer(session, data, type, file);
+			if (true) {
+				setResult('"' + data + '"' + ' uploaded sucessfully!');		
+			} else {
+				setResult('"' + data + '"' + ' upload fail!');	
+			}
+			setOpen(true);
+		}
+		
+		
 	}
 
 	const handleClose = () => {
@@ -66,12 +86,18 @@ export default function TextEditor(props) {
 
 	return (
 		<Box className={ classes.root }>
-			<TextField 
-			className={ classes.editor }
-			multiline
-			value={ value }
-			onChange={ handleChange }
-			/>
+			<Card 
+			elevation={0}
+			className={classes.editor}>
+				<CardMedia
+					component="img"
+					image={src}/>
+			</Card>
+			<input 
+			type='file' 
+			accept='image/png, image/jpg, image/jpeg'
+			required
+			onChange={handleChange} />
 			<Button 
 			className={ classes.button }
 			variant='contained' 
@@ -86,13 +112,8 @@ export default function TextEditor(props) {
 			open={open}
 			onClose={handleClose}>
 				<DialogTitle>
-					Uploaded successfully!
+					{result}!
 				</DialogTitle>
-				<DialogContent>
-					<DialogContentText>
-						"{data}" uploaded successfully!
-					</DialogContentText>
-				</DialogContent>
 				<DialogActions>
 					<Button onClick={handleClose} color='primary'>
 						Exit
@@ -104,12 +125,11 @@ export default function TextEditor(props) {
 }
 
 TextEditor.defaultProps = {
-	content: 'Default value',
 
 };
 
 TextEditor.propTypes = {
-	content: PropTypes.string,
+	url: PropTypes.string,
 	session: PropTypes.string,
 	data: PropTypes.string,
 	type: PropTypes.string,

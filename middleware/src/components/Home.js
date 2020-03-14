@@ -6,6 +6,7 @@ import Card 			from '@material-ui/core/Card';
 import CardMedia 		from '@material-ui/core/CardMedia';
 
 import { requestServer } 	from 'requestServer.js';
+import ImageEditor 		from 'components/form/ImageEditor';
 
 
 const useStyles = makeStyles(theme => ({
@@ -26,17 +27,12 @@ export default function Home(props) {
 	const [home, setHome] = useState(null);
 
 	useEffect(requestServer('about', 'home', 'image', setHome), []);
+	console.log("******************")
+	console.log(window.location.origin + '/assets/home.png')
 
 	return (
 		<React.Fragment>
-			<Card 
-			elevation={0}
-			className={classes.card}>
-				<CardMedia
-					component="img"
-					className={classes.media}
-					image={home}/>
-			</Card>
+			<ImageEditor url={ home } session='about' data='home' type='image' />
 		</React.Fragment>
 	);
 }

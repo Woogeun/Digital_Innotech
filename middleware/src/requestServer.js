@@ -119,11 +119,17 @@ function uploadServer (session, data, type, content) {
 				console.log("POST upload error in text " + server);
 			});
 	} else if (type === 'image') {
+		const data = new FormData();
+		data.append('file', content);
+		data.append('mode', 'upload');
+		data.append('type', type);
+
 		axios
-			.post(server, {
-				type: type,
-				mode: 'upload',
-				content: content
+			.post(server, data,
+				{
+				headers: {
+					'Content-Type': 'multipart/form-mixed; boundary: \r\n'
+				}
 			})
 			.then(function(res) {
 				console.log("POST upload success in image " + server);
