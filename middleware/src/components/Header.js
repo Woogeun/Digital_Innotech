@@ -10,6 +10,7 @@ import Toolbar 			from '@material-ui/core/Toolbar';
 import Typography 		from '@material-ui/core/Typography';
 
 import { requestServer } 	from 'requestServer.js';
+import ImageEditor 		from 'components/form/ImageEditor';
 
 
 const useStyles = makeStyles(theme => ({
@@ -97,8 +98,8 @@ export default function Header(props) {
 			<Grid container justify="center">
 				<Grid item xs={10} sm={10}>
 					<Toolbar className={ classes.toolbar }>
-						<a href='/'>
-							<img src={logoURL} className={ classes.logo } />
+						<a href='/' className={ classes.logo }>
+							<ImageEditor url={ logoURL } session={'header'} data={'logo'} type={'image'}/>
 						</a>
 						<Grid container justify="flex-end" className={ classes.toolbarSecondary }>
 							{ sections.map((section, i) => {

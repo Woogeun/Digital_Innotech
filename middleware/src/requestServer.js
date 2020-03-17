@@ -3,7 +3,7 @@ import axios from 'axios'
 
 function requestServer (session, data, type, setFunction) {
 	return async () => {
-		const server = 'http://127.0.0.1:8000/'+ session + '/' + data + '/';
+		const server = 'http://143.248.237.152:8000/'+ session + '/' + data + '/';
 		
 		if (type === 'text') {
 			axios
@@ -50,7 +50,7 @@ function requestServer (session, data, type, setFunction) {
 }
 
 function updateServer (session, data, type, content) {
-	const server = 'http://127.0.0.1:8000/'+ session + '/' + data + '/';
+	const server = 'http://143.248.237.152:8000/'+ session + '/' + data + '/';
 
 	if (type === 'text') {
 		axios
@@ -103,7 +103,7 @@ function updateServer (session, data, type, content) {
 }
 
 function uploadServer (session, data, type, content) {
-	const server = 'http://127.0.0.1:8000/'+ session + '/' + data + '/';
+	const server = 'http://143.248.237.152:8000/'+ session + '/' + data + '/';
 	
 	if (type === 'text') {
 		axios
@@ -120,7 +120,8 @@ function uploadServer (session, data, type, content) {
 			});
 	} else if (type === 'image') {
 		const data = new FormData();
-		data.append('file', content);
+		data.append('content', content);
+		data.append('id', content.name)
 		data.append('mode', 'upload');
 		data.append('type', type);
 
@@ -128,7 +129,8 @@ function uploadServer (session, data, type, content) {
 			.post(server, data,
 				{
 				headers: {
-					'Content-Type': 'multipart/form-mixed; boundary: \r\n'
+					'content-type': `multipart/form-mixed;boundary=${data._boundary}`
+					// 'content-type': content.type
 				}
 			})
 			.then(function(res) {
@@ -158,7 +160,7 @@ function uploadServer (session, data, type, content) {
 }
 
 function deleteServer (session, data, type, content) {
-	const server = 'http://127.0.0.1:8000/'+ session + '/' + data + '/';
+	const server = 'http://143.248.237.152:8000/'+ session + '/' + data + '/';
 	
 	if (type === 'text') {
 		axios

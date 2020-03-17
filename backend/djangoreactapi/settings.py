@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '3wz_mxpys8sv=45x!d*22n*69ry^*bb!c-t7&ikw0jj^4oj$nq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 
 ALLOWED_HOSTS = ['*']
@@ -73,10 +73,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ORIGIN_WHITELIST = ( # add
-    'http://localhost:3000', # Main homepage
-    'http://localhost:3030', # Homepage for modification
+CORS_ORIGIN_WHITELIST = ( 
+    
 )
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+
+
 
 ROOT_URLCONF = 'djangoreactapi.urls'
 

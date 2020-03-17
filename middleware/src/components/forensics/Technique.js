@@ -12,6 +12,7 @@ import TextPost 		from 'components/post/TextPost';
 import { requestServer } 	from 'requestServer.js';
 import TextEditor 		from 'components/form/TextEditor';
 import TitleContentEditor 	from 'components/form/TitleContentEditor';
+import ImageEditor 	from 'components/form/ImageEditor';
 
 
 const useStyles = makeStyles(theme => ({
@@ -67,12 +68,7 @@ export default function Technique(props) {
 			<Grid item xs={12} >
 				<TextEditor content={title} session='forensics/technique' data='title' type='text' />
 			</Grid>
-			<Card>
-				<CardMedia
-				component="img"
-				className={classes.media}
-				image={image}/>
-			</Card>
+			<ImageEditor url={ image } session={'forensics/technique'} data={'image'} type={'image'}/>
 			<Grid
 			container
 			spacing={2}

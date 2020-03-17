@@ -9,6 +9,7 @@ import Typography     	from '@material-ui/core/Typography';
 import TextPost 		from 'components/post/TextPost';
 import { requestServer } 	from 'requestServer.js';
 import TextEditor 		from 'components/form/TextEditor';
+import ImageEditor 		from 'components/form/ImageEditor';
 
 
 const useStyles = makeStyles(theme => ({
@@ -86,9 +87,7 @@ export default function CTO(props) {
 					spacing={2}>
 					<Grid container item align='center' justify='center' >
 						<Grid item>
-							<Paper square className={ classes.profile }>
-								<img src={profile}  />
-							</Paper>
+							<ImageEditor url={ profile } session={'about/cto'} data={'profile'} type={'image'}/>
 						</Grid>
 					</Grid>
 					<Grid item >

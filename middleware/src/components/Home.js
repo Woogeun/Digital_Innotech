@@ -27,8 +27,6 @@ export default function Home(props) {
 	const [home, setHome] = useState(null);
 
 	useEffect(requestServer('about', 'home', 'image', setHome), []);
-	console.log("******************")
-	console.log(window.location.origin + '/assets/home.png')
 
 	return (
 		<React.Fragment>

@@ -32,8 +32,8 @@ const useStyles = makeStyles(theme => ({
 		backgroundColor: '#FAFAFA',
 		margin: theme.spacing(2, 0),
 		display: 'flex',
-		minHeight: 300,
-		width: '100%',
+		// minHeight: 300,
+		// width: '100%',
 		float: 'right'
 	},
 	button: {
