@@ -37,10 +37,15 @@ def returnVideoDetection(request):
 @csrf_exempt
 def returnNetwork(request):
 	if request.method == "POST":
-		body = json.loads(request.body)
-		data_type, mode, content = body['type'], body['mode'], body['content']
-		instance = Network(image=content)
-		# instance.save()
+		body = Request(request, parsers=[FormParser(), MultiPartParser()]).data
+		data_type, mode, content, id = body['type'], body['mode'], body['content'], body['id']
+		img = Image.open(content)
+		io = BytesIO()
+		img.save(io, format='JPEG')
+		image = ContentFile(io.getvalue(), 'network.jpg')
+
+		instance = Network(image=image)
+		instance.save()
 		return HttpResponse('Success')
 	else:
 		images = list(Network.objects.all())
