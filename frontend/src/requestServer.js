@@ -3,7 +3,7 @@ import axios from 'axios'
 
 export default function requestServer (session, data, type, setFunction) {
 	return async () => {
-		const server = 'http://143.248.237.152:8000/'+ session + '/' + data + '/';
+		const server = 'http://127.0.0.1:8000/'+ session + '/' + data + '/';
 		
 		if (type === 'text') {
 			axios

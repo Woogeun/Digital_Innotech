@@ -7,10 +7,6 @@ import Grid 			from '@material-ui/core/Grid';
 import Paper 			from '@material-ui/core/Paper';
 import Typography 		from '@material-ui/core/Typography';
 
-import networkImg1 		from 'assets/network1.png';
-import networkImg2 		from 'assets/network2.png';
-import networkImg3 		from 'assets/network3.png';
-import networkImg4 		from 'assets/network4.png';
 import TextPost 		from 'components/post/TextPost';
 import requestServer 	from 'requestServer';
 
@@ -45,7 +41,6 @@ const useStyles = makeStyles(theme => ({
 
 export default function KAI_Forensics(props) {
 	const classes = useStyles();
-	const imgs = [networkImg1, networkImg2, networkImg3, networkImg4];
 
 	const [imageDetection, setImageDetection] 	= useState({title: 'Not defined', content: 'Not defined'});
 	const [videoDetection, setVideoDetection] 	= useState({title: 'Not defined', content: 'Not defined'});
@@ -54,6 +49,11 @@ export default function KAI_Forensics(props) {
 	useEffect(requestServer('pcSolution/kaiforensics', 'imagedetection', 'json', setImageDetection), []);
 	useEffect(requestServer('pcSolution/kaiforensics', 'videodetection', 'json', setVideoDetection), []);
 	useEffect(requestServer('pcSolution/kaiforensics', 'title', 'text', setTitle), []);
+
+	function importAll(r) {
+		return r.keys().map(r);
+	}
+	const imgs = importAll(require.context('src/../../../assets/network_image/', false, /\.(png|jpe?g|svg)$/));
 
 	return (
 		<Grid container justify='center' spacing={2} >

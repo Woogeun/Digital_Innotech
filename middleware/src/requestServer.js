@@ -3,7 +3,7 @@ import axios from 'axios'
 
 function requestServer (session, data, type, setFunction) {
 	return async () => {
-		const server = 'http://143.248.237.152:8000/'+ session + '/' + data + '/';
+		const server = 'http://127.0.0.1:8000/'+ session + '/' + data + '/';
 		
 		if (type === 'text') {
 			axios
@@ -50,7 +50,7 @@ function requestServer (session, data, type, setFunction) {
 }
 
 function updateServer (session, data, type, content) {
-	const server = 'http://143.248.237.152:8000/'+ session + '/' + data + '/';
+	const server = 'http://127.0.0.1:8000/'+ session + '/' + data + '/';
 
 	if (type === 'text') {
 		axios
@@ -103,7 +103,7 @@ function updateServer (session, data, type, content) {
 }
 
 function uploadServer (session, data, type, content) {
-	const server = 'http://143.248.237.152:8000/'+ session + '/' + data + '/';
+	const server = 'http://127.0.0.1:8000/'+ session + '/' + data + '/';
 	
 	if (type === 'text') {
 		axios
@@ -160,7 +160,7 @@ function uploadServer (session, data, type, content) {
 }
 
 function deleteServer (session, data, type, content) {
-	const server = 'http://143.248.237.152:8000/'+ session + '/' + data + '/';
+	const server = 'http://127.0.0.1:8000/'+ session + '/' + data + '/';
 	
 	if (type === 'text') {
 		axios

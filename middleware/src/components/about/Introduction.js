@@ -9,18 +9,6 @@ import GetAppIcon       		from '@material-ui/icons/GetApp';
 import Paper		       		from '@material-ui/core/Paper';
 import Typography       		from '@material-ui/core/Typography';
 
-import pdf 				from 'assets/KAI_Forensics.pdf'
-import img1 			from 'assets/KAI_Forensics_1.jpg';
-import img2 			from 'assets/KAI_Forensics_2.jpg';
-import img3 			from 'assets/KAI_Forensics_3.jpg';
-import img4 			from 'assets/KAI_Forensics_4.jpg';
-import img5 			from 'assets/KAI_Forensics_5.jpg';
-import img6 			from 'assets/KAI_Forensics_6.jpg';
-import img7 			from 'assets/KAI_Forensics_7.jpg';
-import img8 			from 'assets/KAI_Forensics_8.jpg';
-import img9 			from 'assets/KAI_Forensics_9.jpg';
-import img10 			from 'assets/KAI_Forensics_10.jpg';
-import img11 			from 'assets/KAI_Forensics_11.jpg';
 import ImageOrderPost 	from 'components/post/ImageOrderPost';
 import { requestServer } 	from 'requestServer.js';
 import TextEditor 		from 'components/form/TextEditor';
@@ -62,14 +50,14 @@ const useStyles = makeStyles(theme => ({
 
 export default function Introduction(props) {
 	const classes = useStyles();
-	const imgs = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11];
-	// const [pdf, setPdf] 			= useState(null);
-	// const [pdfImage, setPdfImage] 	= useState(null);
 	const [title, setTitle] 		= useState(null);
-
-	// useEffect(requestServer('about/introduction', 'pdf', 'pdf', setPdf), []);
-	// useEffect(requestServer('about/introduction', 'pdfimage', 'image', setPdfImage), []);
 	useEffect(requestServer('about/introduction', 'title', 'text', setTitle), []);
+
+	function importAll(r) {
+		return r.keys().map(r);
+	}
+	const imgs = importAll(require.context('src/../../../assets/KAI_Forensics_image/', false, /\.(png|jpe?g|svg)$/));
+	const pdf = importAll(require.context('src/../../../assets/KAI_Forensics_file/', false, /./))[0];
 
 	return (
 		<Grid container justify='center' className={ classes.root } spacing={2}>
