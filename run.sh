@@ -12,7 +12,9 @@ pip install -r requirements.txt
 cd backend
 /usr/local/bin/python3 manage.py runserver &
 cd ../frontend
+yarn
 yarn start &
 cd ../middleware
+yarn
 yarn start &
 cd ..
