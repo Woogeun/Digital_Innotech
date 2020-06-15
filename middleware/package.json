@@ -19,8 +19,8 @@
 		"react-scripts": "^3.3.0"
 	},
 	"scripts": {
-		"start": "yarn && export PORT=3030 && cross-env NODE_PATH=src react-scripts start",
-		"start_windows": "yarn && SET PORT=3030 && cross-env NODE_PATH=src react-scripts start",
+		"start": "yarn && export PORT=1440 && cross-env NODE_PATH=src react-scripts start",
+		"start_windows": "yarn && SET PORT=1440 && cross-env NODE_PATH=src react-scripts start",
 		"build": "cross-env NODE_PATH=src react-scripts build",
 		"test": "react-scripts test --env=jsdom",
 		"eject": "react-scripts eject"
