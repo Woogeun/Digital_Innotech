@@ -67,7 +67,7 @@ export default function Body(props) {
 					<Route exact path="/innotech/kaiForensics" 	component={() => <KAI_Forensics />} />
 					<Route exact path="/innotech/temp" 			component={() => <Temp />} />
 
-					<Route exact path="/innotech/technique" 		component={() => <Technique />} />
+					<Route exact path="/innotech/technique" 	component={() => <Technique />} />
 					<Route exact path="/innotech/papers" 		component={() => <Papers />} />
 
 					<Route exact path="/innotech/contact" 		component={() => <Contact />} />
