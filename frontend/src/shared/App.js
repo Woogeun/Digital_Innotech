@@ -14,19 +14,19 @@ export default function App(props) {
 			subSections: [
 				{
 					title: "CTO 메세지",
-					url: "/CTO"
+					url: "/innotech/CTO"
 				}, 
 				{
 					title: "회사 연혁",
-					url: "/history"
+					url: "/innotech/history"
 				}, 
 				{
 					title: "회사 소개 자료",
-					url: "/introduction"
+					url: "/innotech/introduction"
 				}, 
 				{
 					title: "소식",
-					url: "/news"
+					url: "/innotech/news"
 				}, 
 			]
 		},
@@ -36,7 +36,7 @@ export default function App(props) {
 			subSections: [
 				{
 					title: "KAI_Forensics 2.0",
-					url: "/kaiForensics"
+					url: "/innotech/kaiForensics"
 				}
 			]
 		},
@@ -46,7 +46,7 @@ export default function App(props) {
 			subSections: [
 				{
 					title: "출시 예정",
-					url: "/temp"
+					url: "/innotech/temp"
 				}
 			]
 		},
@@ -56,17 +56,17 @@ export default function App(props) {
 			subSections: [
 				{
 					title: "영상/동영상 포렌식 기술이란?",
-					url: "/technique"
+					url: "/innotech/technique"
 				}, 
 				{
 					title: "발표 논문",
-					url: "/papers"
+					url: "/innotech/papers"
 				}
 			]
 		},
 		{
 			title: "Contact",
-			url: "/contact",
+			url: "/innotech/contact",
 			subSections: [
 				
 			]
