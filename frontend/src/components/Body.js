@@ -56,7 +56,6 @@ export default function Body(props) {
 					<Route exact path="/">
 						<Redirect to="/innotech" />
 					</Route>
-
 					<Route exact path="/innotech" 				component={() => <Home />} />
 					
 					<Route exact path="/innotech/cto" 			component={() => <CTO />} />
