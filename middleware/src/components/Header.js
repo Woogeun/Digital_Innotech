@@ -98,7 +98,7 @@ export default function Header(props) {
 			<Grid container justify="center">
 				<Grid item xs={10} sm={10}>
 					<Toolbar className={ classes.toolbar }>
-						<a href='/' className={ classes.logo }>
+						<a href='/innotech' className={ classes.logo }>
 							<ImageEditor url={ logoURL } session={'header'} data={'logo'} type={'image'}/>
 						</a>
 						<Grid container justify="flex-end" className={ classes.toolbarSecondary }>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect }  	from 'react';
 import PropTypes 						from 'prop-types';
-import { Route, Switch } 				from 'react-router-dom';
+import { Route, Switch, Redirect }		from 'react-router-dom';
 
 import { makeStyles } 	from '@material-ui/core/styles';
 import Grid 			from '@material-ui/core/Grid';
@@ -53,20 +53,24 @@ export default function Body(props) {
 		<Grid container justify='center' className={ classes.root } spacing={2}>
 			<Grid item xs={8} className={ classes.container }>
 				<Switch>
-					<Route exact path="/" 				component={() => <Home />} />
+					<Route exact path="/">
+						<Redirect to="/innotech" />
+					</Route>
+
+					<Route exact path="/innotech" 				component={() => <Home />} />
 					
-					<Route exact path="/cto" 			component={() => <CTO />} />
-					<Route exact path="/history" 		component={() => <History />} />
-					<Route exact path="/introduction" 	component={() => <Introduction />} />
-					<Route exact path="/news" 			component={() => <News />} />
+					<Route exact path="/innotech/cto" 			component={() => <CTO />} />
+					<Route exact path="/innotech/history" 		component={() => <History />} />
+					<Route exact path="/innotech/introduction" 	component={() => <Introduction />} />
+					<Route exact path="/innotech/news" 			component={() => <News />} />
 
-					<Route exact path="/kaiForensics" 	component={() => <KAI_Forensics />} />
-					<Route exact path="/temp" 			component={() => <Temp />} />
+					<Route exact path="/innotech/kaiForensics" 	component={() => <KAI_Forensics />} />
+					<Route exact path="/innotech/temp" 			component={() => <Temp />} />
 
-					<Route exact path="/technique" 		component={() => <Technique />} />
-					<Route exact path="/papers" 		component={() => <Papers />} />
+					<Route exact path="/innotech/technique" 		component={() => <Technique />} />
+					<Route exact path="/innotech/papers" 		component={() => <Papers />} />
 
-					<Route exact path="/contact" 		component={() => <Contact />} />
+					<Route exact path="/innotech/contact" 		component={() => <Contact />} />
 				</Switch>
 			</Grid>
 
