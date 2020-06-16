@@ -10,11 +10,9 @@
 
 # run servers
 cd backend
-/usr/local/bin/python3 manage.py runserver &
+nohup python manage.py runserver 0:8000 &
 cd ../frontend
-yarn
-yarn start &
+nohup yarn start &
 cd ../middleware
-yarn
-yarn start &
+nohup yarn start &
 cd ..
