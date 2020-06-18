@@ -54,7 +54,7 @@ export default function Body(props) {
 			<Grid item xs={8} className={ classes.container }>
 				<Switch>
 					
-					<Route exact path="" 				component={() => <Home />} />
+					<Route exact path="/" 				component={() => <Home />} />
 					
 					<Route exact path="/cto" 			component={() => <CTO />} />
 					<Route exact path="/history" 		component={() => <History />} />
