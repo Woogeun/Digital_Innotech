@@ -97,7 +97,7 @@ export default function Header(props) {
 			<Grid container justify="center">
 				<Grid item xs={10} sm={10}>
 					<Toolbar className={ classes.toolbar }>
-						<a href='/innotech'>
+						<a href='/'>
 							<img src={logoURL} className={ classes.logo } />
 						</a>
 						<Grid container justify="flex-end" className={ classes.toolbarSecondary }>
