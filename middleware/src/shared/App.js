@@ -35,7 +35,7 @@ export default function App(props) {
 			url: "/pcSolution",
 			subSections: [
 				{
-					title: "KAI_Forensics 2.0",
+					title: "KAI Catch 2.0",
 					url: "/innotech/kaiForensics"
 				}
 			]
