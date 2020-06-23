@@ -44,7 +44,7 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-export default function ImageEditor(props) {
+export default function PdfEditor(props) {
 	const classes = useStyles();
 	const theme = useTheme();
 	const { url, session, data, type } = props;
@@ -86,16 +86,8 @@ export default function ImageEditor(props) {
 
 	return (
 		<Box className={ classes.root }>
-			<Card 
-			elevation={0}
-			className={classes.editor}>
-				<CardMedia
-					component="img"
-					image={src}/>
-			</Card>
 			<input 
-			type='file' 
-			accept='image/png, image/jpg, image/jpeg'
+			type='file'
 			required
 			onChange={handleChange} />
 			<Button 
@@ -124,11 +116,11 @@ export default function ImageEditor(props) {
 	);
 }
 
-ImageEditor.defaultProps = {
+PdfEditor.defaultProps = {
 
 };
 
-ImageEditor.propTypes = {
+PdfEditor.propTypes = {
 	url: PropTypes.string,
 	session: PropTypes.string,
 	data: PropTypes.string,

@@ -45,7 +45,21 @@ function requestServer (session, data, type, setFunction) {
 			
 		} else if (type === 'zip') {
 
-		} 
+		} else if (type === 'pdf') {
+			axios
+				.get(server, {
+					responseType: 'blob'
+				})
+				.then(function(res) {
+					const pdf = res.data;
+					const url = URL.createObjectURL(pdf);
+					setFunction(url);	
+				})
+				.catch(function(error) {
+					console.log("GET error in pdf " + server);
+					setFunction(null);
+				});
+		}
 	}
 }
 
@@ -99,7 +113,9 @@ function updateServer (session, data, type, content) {
 		
 	} else if (type === 'zip') {
 
-	} 
+	} else if (type === 'pdf') {
+		
+	}
 }
 
 function uploadServer (session, data, type, content) {
@@ -156,7 +172,28 @@ function uploadServer (session, data, type, content) {
 		
 	} else if (type === 'zip') {
 
-	} 
+	} else if (type === 'pdf') {
+		const data = new FormData();
+		data.append('content', content);
+		data.append('id', content.name);
+		data.append('mode', 'upload');
+		data.append('type', type);
+
+		axios
+			.post(server, data,
+			{
+				headers: {
+					'content-type' : 'multipart/form-data'
+				}
+			})
+			.then(function(res) {
+				console.log("POST upload success in pdf " + server);
+			})
+			.catch(function(error) {
+				console.log("POST upload error in pdf " + server);
+			});
+	}
+
 }
 
 function deleteServer (session, data, type, content) {
@@ -205,7 +242,9 @@ function deleteServer (session, data, type, content) {
 		
 	} else if (type === 'zip') {
 
-	} 
+	} else if (type === 'pdf') {
+		
+	}
 }
 
 export {requestServer, updateServer, uploadServer, deleteServer};

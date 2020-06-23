@@ -12,6 +12,7 @@ import Typography       		from '@material-ui/core/Typography';
 import ImageOrderPost 	from 'components/post/ImageOrderPost';
 import { requestServer } 	from 'requestServer.js';
 import TextEditor 		from 'components/form/TextEditor';
+import PdfEditor 		from 'components/form/PdfEditor';
 
 
 const useStyles = makeStyles(theme => ({
@@ -51,13 +52,15 @@ const useStyles = makeStyles(theme => ({
 export default function Introduction(props) {
 	const classes = useStyles();
 	const [title, setTitle] 		= useState(null);
+	const [pdfURL, setPdfURL] 		= useState(null);
 	useEffect(requestServer('about/introduction', 'title', 'text', setTitle), []);
+	useEffect(requestServer('about/introduction', 'pdf', 'pdf', setPdfURL), []);
 
 	function importAll(r) {
 		return r.keys().map(r);
 	}
-	const imgs = importAll(require.context('src/../../../assets/KAI_Forensics_image/', false, /\.(png|jpe?g|svg)$/));
-	const pdf = importAll(require.context('src/../../../assets/KAI_Forensics_file/', false, /./))[0];
+	// const imgs = importAll(require.context('src/../../../assets/KAI_Forensics_image/', false, /\.(png|jpe?g|svg)$/));
+	// const pdf = importAll(require.context('src/../../../assets/KAI_Forensics_file/', false, /./))[0];
 
 	return (
 		<Grid container justify='center' className={ classes.root } spacing={2}>
@@ -70,10 +73,11 @@ export default function Introduction(props) {
 					회사 소개 자료 다운로드
 				</Typography>
 				<Button>
-					<a href={pdf} >
+					<a href={ pdfURL } download>
 						<GetAppIcon color='primary' fontSize='large' />
 					</a>
 				</Button>
+				<PdfEditor url={ '' } session={'about/introduction'} data={'pdf'} type={'pdf'}/>
 			</Box>
 		</Grid>
 	);

@@ -45,7 +45,21 @@ export default function requestServer (session, data, type, setFunction) {
 			
 		} else if (type === 'zip') {
 
-		} 
+		} else if (type === 'pdf') {
+			axios
+				.get(server, {
+					responseType: 'blob'
+				})
+				.then(function(res) {
+					const pdf = res.data;
+					const url = URL.createObjectURL(pdf);
+					setFunction(url);	
+				})
+				.catch(function(error) {
+					console.log("GET error in pdf " + server);
+					setFunction(null);
+				});
+		}
 	}
 }
 

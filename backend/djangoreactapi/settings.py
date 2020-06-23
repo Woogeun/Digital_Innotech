@@ -24,7 +24,7 @@ SECRET_KEY = '3wz_mxpys8sv=45x!d*22n*69ry^*bb!c-t7&ikw0jj^4oj$nq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-
+DATA_UPLOAD_MAX_MEMORY_SIZE = 5242880
 
 ALLOWED_HOSTS = ['*']
 

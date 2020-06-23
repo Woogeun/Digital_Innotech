@@ -145,8 +145,9 @@ def returnPdfImage(request):
 	if request.method == "POST":
 		body = json.loads(request.body)
 		data_type, mode, content = body['type'], body['mode'], body['content']
+		print(f"****{data_type}, {mode}, {content}")
 		instance = PdfImage(image=content)
-		# instance.save()
+		instance.save()
 		return HttpResponse('Success')
 	else:
 		image_path = list(PdfImage.objects.all())[-1].image.path
@@ -156,14 +157,14 @@ def returnPdfImage(request):
 @csrf_exempt
 def returnPdf(request):
 	if request.method == "POST":
-		body = json.loads(request.body)
+		body = Request(request, parsers=[FormParser(), MultiPartParser()]).data
 		data_type, mode, content = body['type'], body['mode'], body['content']
-		instance = Pdf(image=content)
-		# instance.save()
+		instance = Pdf(pdf=content)
+		instance.save()
 		return HttpResponse('Success')
 	else:
-		valid_image = list(Pdf.objects.all())[-1].image.path
-		with open(valid_image, "rb") as f:
+		valid_pdf = list(Pdf.objects.all())[-1].pdf.path
+		with open(valid_pdf, "rb") as f:
 			return HttpResponse(f.read(), content_type="application/pdf")
 
 @csrf_exempt

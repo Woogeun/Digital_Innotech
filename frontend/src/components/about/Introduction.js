@@ -50,7 +50,9 @@ const useStyles = makeStyles(theme => ({
 export default function Introduction(props) {
 	const classes = useStyles();
 	const [title, setTitle] 		= useState(null);
+	const [pdfURL, setPdfURL] 		= useState(null);
 	useEffect(requestServer('about/introduction', 'title', 'text', setTitle), []);
+	useEffect(requestServer('about/introduction', 'pdf', 'pdf', setPdfURL), []);
 
 	function importAll(r) {
 		return r.keys().map(r);
@@ -73,7 +75,7 @@ export default function Introduction(props) {
 					회사 소개 자료 다운로드
 				</Typography>
 				<Button>
-					<a href={pdf} >
+					<a href={ pdfURL } download>
 						<GetAppIcon color='primary' fontSize='large' />
 					</a>
 				</Button>
