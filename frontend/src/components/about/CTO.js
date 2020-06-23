@@ -103,12 +103,12 @@ export default function CTO(props) {
 							<Typography className={ classes.careerText } variant='subtitle2'>
 								교육
 							</Typography>
-							<TextPost content={ education } type='caption'/>
+							<TextPost content={ education } doubleBreak={true} type='caption'/>
 							<br/><br/>
 							<Typography className={ classes.careerText } variant='subtitle2'>
 								경력
 							</Typography>
-							<TextPost content={ career } type='caption'/>
+							<TextPost content={ career } doubleBreak={true} type='caption'/>
 						</Paper>
 					</Grid>
 				</Grid>
