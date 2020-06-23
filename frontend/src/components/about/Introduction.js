@@ -67,13 +67,13 @@ export default function Introduction(props) {
 					</Typography>
 				</Paper>
 			</Grid>
-			<Box position='relative' className={ classes.container } >
-				{ imgs.map((img, i) => {
-					return (
-						<ImageOrderPost img={img} order={i} />
-					);
-				})}
-			</Box>
+			// <Box position='relative' className={ classes.container } >
+			// 	{ imgs.map((img, i) => {
+			// 		return (
+			// 			<ImageOrderPost img={img} order={i} />
+			// 		);
+			// 	})}
+			// </Box>
 			<Box className={classes.icon}>
 				<Typography className={classes.text}>
 					회사 소개 자료 다운로드
