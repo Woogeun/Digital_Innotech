@@ -64,13 +64,7 @@ export default function Introduction(props) {
 			<Grid item xs={12} >
 				<TextEditor content={title} session='about/introduction' data='title' type='text' />
 			</Grid>
-			<Box position='relative' className={ classes.container } >
-				{ imgs.map((img, i) => {
-					return (
-						<ImageOrderPost img={img} order={i} />
-					);
-				})}
-			</Box>
+			
 			<Box className={classes.icon}>
 				<Typography className={classes.text}>
 					회사 소개 자료 다운로드
@@ -92,3 +86,12 @@ Introduction.defaultProps = {
 Introduction.propTypes = {
 	
 };
+
+
+			// <Box position='relative' className={ classes.container } >
+			// 	{ imgs.map((img, i) => {
+			// 		return (
+			// 			<ImageOrderPost img={img} order={i} />
+			// 		);
+			// 	})}
+			// </Box>
