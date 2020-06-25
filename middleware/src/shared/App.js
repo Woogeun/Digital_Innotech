@@ -51,11 +51,11 @@ export default function App(props) {
 			]
 		},
 		{
-			title: "영상/동영상 포렌식 기술이란?",
+			title: "영상 포렌식 기술이란?",
 			url: "/forensics",
 			subSections: [
 				{
-					title: "영상/동영상 포렌식 기술이란?",
+					title: "영상 포렌식 기술이란?",
 					url: "/innotech/technique"
 				}, 
 				{
