@@ -30,7 +30,7 @@ export default function Footer(props) {
 	return (
 		<Grid container justify='center' className={ classes.root } spacing={2}>
 			<Grid item xs={8} className={ classes.container }>
-				<footer className={ classes.footer } align='center'>
+				<footer className={ classes.footer } align='left'>
 					<TextPost content={ footer } type='body2'/>
 				</footer>
 			</Grid>
