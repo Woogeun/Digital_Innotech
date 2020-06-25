@@ -10,7 +10,7 @@
 
 # run servers
 cd backend
-nohup python manage.py runserver 0:8000 &
+nohup python3.7 manage.py runserver 0:8000 &
 cd ../frontend
 nohup yarn start &
 cd ../middleware
