@@ -21,7 +21,7 @@ export default function Footer(props) {
 	useEffect(requestServer('footer', 'contact', 'text', setFooter), []);
 
 	return (
-		<footer className={ classes.footer } align='center'>
+		<footer className={ classes.footer } align='left'>
 			<TextPost content={ footer } type='body2'/>
 		</footer>
 	);

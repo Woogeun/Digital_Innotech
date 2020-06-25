@@ -5,6 +5,8 @@ import { makeStyles }	from '@material-ui/core/styles';
 import Grid 			from '@material-ui/core/Grid';
 import Paper 			from '@material-ui/core/Paper';
 import Typography 		from '@material-ui/core/Typography';
+import Card 			from '@material-ui/core/Card';
+import CardMedia 		from '@material-ui/core/CardMedia';
 
 import requestServer	from 'requestServer';
 
@@ -18,13 +20,25 @@ const useStyles = makeStyles(theme => ({
 		borderBottom: `1px solid ${theme.palette.divider}`,
 
 	},
+	card: {
+		backgroundColor: '#FAFAFA',
+		margin: theme.spacing(2, 0),
+		display: 'flex',
+		minHeight: 300,
+		width: '100%',
+	},
+	media: {
+		
+	},
 }));
 
 export default function Temp(props) {
 	const classes = useStyles();
 	const [title, setTitle] = useState(null);
+	const [img, setImg] = useState(null);
 
 	useEffect(requestServer('appSolution/temp', 'title', 'text', setTitle), []);
+	useEffect(requestServer('appSolution/temp', 'img', 'image', setImg), []);
 
 	return (
 		<Grid container justify='center' className={ classes.root } spacing={2}>
@@ -35,9 +49,14 @@ export default function Temp(props) {
 					</Typography>
 				</Paper>
 			</Grid>
-			<Grid>
-				Nothing on it.
-			</Grid>
+			<Card 
+			elevation={0}
+			className={classes.card}>
+				<CardMedia
+					component="img"
+					className={classes.media}
+					image={img}/>
+			</Card>
 		</Grid>
 	);
 }
