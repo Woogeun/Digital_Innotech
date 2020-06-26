@@ -1,9 +1,11 @@
 import axios from 'axios'
 
+const _server = 'http://192.249.19.100:8000/';
+// const _server = 'http://localhost:8000/';
 
 export default function requestServer (session, data, type, setFunction) {
 	return async () => {
-		const server = 'http://192.249.19.100:8000/'+ session + '/' + data + '/';
+		const server = _server + session + '/' + data + '/';
 		
 		if (type === 'text') {
 			axios

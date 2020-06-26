@@ -2,6 +2,11 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 
+from rest_framework.request import Request
+from rest_framework.parsers import MultiPartParser, FormParser
+from PIL import Image 
+from io import BytesIO
+from django.core.files.base import ContentFile
 from .models import *
 
 @csrf_exempt

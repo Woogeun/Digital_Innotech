@@ -1,9 +1,11 @@
 import axios from 'axios'
 
+const _server = 'http://192.249.19.100:8000/';
+// const _server = 'http://localhost:8000/';
 
 function requestServer (session, data, type, setFunction) {
 	return async () => {
-		const server = 'http://192.249.19.100:8000/'+ session + '/' + data + '/';
+		const server = _server+ session + '/' + data + '/';
 		
 		if (type === 'text') {
 			axios
@@ -64,7 +66,7 @@ function requestServer (session, data, type, setFunction) {
 }
 
 function updateServer (session, data, type, content) {
-	const server = 'http://192.249.19.100:8000/'+ session + '/' + data + '/';
+	const server = _server+ session + '/' + data + '/';
 
 	if (type === 'text') {
 		axios
@@ -119,7 +121,7 @@ function updateServer (session, data, type, content) {
 }
 
 function uploadServer (session, data, type, content) {
-	const server = 'http://192.249.19.100:8000/'+ session + '/' + data + '/';
+	const server = _server+ session + '/' + data + '/';
 	
 	if (type === 'text') {
 		axios
