@@ -5,3 +5,8 @@ class Contact(models.Model):
 
 	def __str__(self):
 		return self.content
+
+class Pdf(models.Model):
+	pdf = models.FileField(upload_to='assets/pdf')
+
+	
