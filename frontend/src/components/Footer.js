@@ -16,10 +16,14 @@ const useStyles = makeStyles(theme => ({
 	},
 	footer: {
 		backgroundColor: theme.palette.background.paper,
-		padding: theme.spacing(3, 0),
+		// padding: theme.spacing(3, 0),
 	},
 	container: {
 		padding: 10,
+	},
+	button: {
+		// paddingLeft: -20,
+		marginLeft: -10
 	}
 }));
 
@@ -38,15 +42,15 @@ export default function Footer(props) {
 				<footer className={ classes.footer } align='left'>
 					<TextPost content={ footer } type='body2'/>
 				</footer>
-			</Grid>
-			<Grid item xs={2} className={ classes.container }>
-				<Button>
-				<a href={ pdfURL } download>
-					<Typography align='right' variant='body2'>
+				
+				<a href={ pdfURL } download className={ classes.button }>
+				<Button  >
+					<Typography align='left' variant='caption' >
 						사용약관
 					</Typography>
-				</a>
 				</Button>
+				</a>
+				
 			</Grid>
 		</Grid>
 	);
